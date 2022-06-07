@@ -1,0 +1,120 @@
+body, html {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  height: 100%;
+}
+
+#root{
+  width: 100%;
+  height: 100%;
+  background-color: rgb(86, 7, 7);
+}
+
+.home{
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.nav{
+  display: flex;
+  height: 8%;
+  width: 100%;
+  background-color: rgb(211, 33, 33);
+  align-items: center;
+  color:white;
+}
+
+.logo{
+  align-self: center;
+  height: auto;
+  width: 100%;
+  padding-left: 2.5%;
+  color: white;
+  font-size: xx-large;
+  font-style: oblique;
+  font-weight: bolder;
+}
+
+.img{
+  padding-right: 10px;
+}
+
+.navesq{
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  padding-right: 2.5%;
+  flex-grow: 1;
+  font-size: large;
+}
+
+
+
+
+.centro{
+  display: flex;
+  width: 100%;
+  height: 92%;
+  justify-content: center;
+}
+
+.conteudo{
+  background-color: rgb(143, 29, 29);
+  width: 85%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+.slider{
+  justify-content: center;
+  width: 40%;
+  height: 30%;
+  align-self: center;
+}
+
+.faixa{
+  width: 100%;
+  height: 6%;
+  background-color: rgb(211, 33, 33);
+  text-align: center;
+  font-size: xx-large;
+  font-style: oblique;
+  font-weight: bold;
+}
+
+.capas{
+  padding-top: 4%;
+
+  display: flex;
+  align-items: center;
+  width: 100%;
+  height: 57.3%;
+  background-color: rgb(143, 29, 29);
+}
+
+.livroprin{
+  display: flex;
+  padding-left: 10%;
+  width: 20%;
+  height: auto;
+  flex-direction: column;
+  align-items: center;
+}
+
+.livrosec{
+  display: flex;
+  width: 20%;
+  height: 100%;
+  flex-direction: column;
+  align-items: center;
+}
+
+.textliv{
+  float: inherit;
+  font-size: large;
+  font-weight: bolder;
+}
