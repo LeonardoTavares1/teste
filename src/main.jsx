@@ -8,11 +8,12 @@ import {
   Route,
 } from "react-router-dom";
 import { Generos } from './pages/generos';
+import { Login } from './pages/login';
 
 ReactDOM.createRoot(document.getElementById('root')).render(
   <BrowserRouter>
     <Routes>
-      <Route path="/" element={<Home />}></Route>
+      <Route path="/" element={<Login />}></Route>
       <Route path='/conteudo' element={<Generos/>}></Route>
     </Routes>
   </BrowserRouter>
