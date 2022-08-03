@@ -8,7 +8,7 @@ import {
   Route,
 } from "react-router-dom";
 import { Generos } from './pages/generos';
-import { Login } from './pages/login';
+import { Login } from './pages/registro';
 
 ReactDOM.createRoot(document.getElementById('root')).render(
   <BrowserRouter>

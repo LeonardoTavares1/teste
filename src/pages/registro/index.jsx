@@ -15,14 +15,16 @@ export function Login(){
     };
 
     const HandleClickButton = () =>{
-       // Axios.post('https://localhost:3001/register',{
-         //   email: values.email,
-           // senha:values.senha})
-           console.log(values)
-           const current = new Date()
-           const data = `0${current.getDate()}/0${current.getMonth()+1}/${current.getFullYear()}`
-           console.log(data)
-        
+            const current = new Date()
+            const data = `0${current.getDate()}/0${current.getMonth()+1}/${current.getFullYear()}`
+            Axios.post('https://localhost:3001/register',{
+            nome:values.nome,
+            email:values.email,
+            senha:values.senha,
+            type:values.userType,
+            dia: data}).then((response)=>(console.log(response)))
+            
+            
     };
 
     return(
@@ -31,6 +33,19 @@ export function Login(){
         <div className='page'>
         <div className='central'>
             <Form>
+
+                <FormGroup row>
+                    <Col sm={12}>
+                        <Input
+                            id="nome"
+                            name="nome"
+                            placeholder="Digite seu nome"
+                            type="text"
+                            onChange={HandleChangeValues}
+                        />
+                    </Col>
+                </FormGroup>
+
                 <FormGroup row>
                     <Col sm={12}>
                         <Input
