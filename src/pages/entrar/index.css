@@ -10,7 +10,7 @@ html, body{
     height: 100%;
 }
 
-.pageReg{
+.page{
     width: 100%;
     height: 100%;
     display: flex;
@@ -20,10 +20,10 @@ html, body{
 }
 
 
-.centralReg{
+.central{
     width: 20%;
     height: 50%;
-    background-color: blue;
+    background-color: red;
     display: flex;
     flex-direction: row;
     justify-content: center;

@@ -1,3 +1,7 @@
+/*
+Mesma mensagem de routes. O servidor ainda não está em MVC, primeiro será feito os testes direto 
+em 'index.js'
+
 export class Usuario{
     constructor(email, fkImg, insertDate, modDate, nome, nomePlum, senha, statusUser){
         this.nome = nome;
@@ -43,4 +47,4 @@ export class Usuario{
     }
 
 
-};
+};*/

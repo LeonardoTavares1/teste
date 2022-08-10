@@ -16,6 +16,9 @@ import './index.css'
 
 export function Home(){
     return(
+
+        /* Aqui não houve alteração, mas tem as sintaxes do reactstrap para formar a navbar e seus itens. */
+
         <div>
             <Navbar
                 color="dark"

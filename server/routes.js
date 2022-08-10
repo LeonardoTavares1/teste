@@ -1,3 +1,6 @@
+/*
+Não foi passado para MVC o código. Tudo estará na pasta 'index.js' por enquanto.
+
 import express from 'express';
 import mysql from 'mysql'
 import { dbConfig } from './database.js';
@@ -31,4 +34,4 @@ routes.post('/register',(req, res)=>{
 
     
 
-export { routes }
+export { routes }*/
