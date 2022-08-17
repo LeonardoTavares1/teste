@@ -1,7 +1,8 @@
 import { useState } from 'react'
-import { Button, Col, Form, FormGroup, Input, Label } from 'reactstrap';
+import { Button, Col, Form, FormGroup, Input, Label, NavLink } from 'reactstrap';
 import './index.css'
 import Axios  from 'axios'
+import { Link } from 'react-router-dom';
 
 export function Registro(){
 
@@ -39,7 +40,7 @@ export function Registro(){
             nome:values.nome,
             email:values.email,
             senha:values.senha,
-            type:values.userType,
+            type: 1,
             dia: data}).then((response)=>(console.log(response)))
             
             
@@ -71,7 +72,7 @@ export function Registro(){
         <div className='pageReg'>
         <div className='centralReg'>
             <Form>
-
+                <h1>Cadastro</h1>
                 <FormGroup row>
                     <Col sm={12}>
                         <Input
@@ -108,45 +109,12 @@ export function Registro(){
                     </Col>
                 </FormGroup>
 
-                <FormGroup
-                    row
-                    tag="fieldset"
-                >
-                    <legend className="col-form-label col-sm-2">
-                        Você é
-                    </legend>
-                    <Col sm={10}>
-                    
-                    <FormGroup check>
-                        <Input
-                            name="userType"
-                            type="radio"
-                            value={1}
-                            onChange={HandleChangeValues}
-                         
-                        />
-                        {' '}
-                        <Label check>
-                            Leitor
-                        </Label>
-                    </FormGroup>
-                    <FormGroup check>
-                        <Input
-                            name="userType"
-                            type="radio"
-                            value={2}
-                            onChange={HandleChangeValues}
-                            
-                        />
-                        {' '}
-                        <Label check>
-                            Escritor
-                        </Label>
-                    </FormGroup>
-                    
-                    </Col>
+                <FormGroup>
+                <Link 
+                    to='/entrar'
+                    className='link'
+                >Caso ja tenha uma conta</Link>
                 </FormGroup>
-
 
                 <Button
                     block

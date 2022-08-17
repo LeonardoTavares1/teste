@@ -19,6 +19,9 @@ export function Login(){
     };
 
     const HandleClickButton = () =>{
+        if (values.email = 'asda'){
+            return(<Redirect to='/home'/>)
+        }
     }
 
     return(
