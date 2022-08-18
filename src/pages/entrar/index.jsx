@@ -2,6 +2,7 @@ import { useState } from 'react'
 import { Button, Col, Form, FormGroup, Input, Label } from 'reactstrap';
 import './index.css'
 import Axios  from 'axios'
+import { useNavigate } from 'react-router-dom';
 
 /* Essa página é quase a mesma coisa da pagina "Registro". Só explicarei sobre o axios aqui. 
 
@@ -18,10 +19,16 @@ export function Login(){
         }))
     };
 
+    const navigate = useNavigate()
+
     const HandleClickButton = () =>{
-        if (values.email = 'asda'){
-            return(<Redirect to='/home'/>)
+
+        Axios.get()
+
+        if (values.email == 'asda' && values.senha == '123'){
+            navigate('/generos', {replace: true})
         }
+        else alert('usuario inexistente')
     }
 
     return(
