@@ -14,4 +14,15 @@ export const dbConfig = {
     user:"root",
     password:"",
     database:"testes",
+    options: {
+        enableArithAbort: true,
+        encrypt: false,
+        trustServerCertificate:true,
+    },
+    connectionTimeout: 15000,
+    pool:{
+        max: 10,
+        min: 0,
+        idleTimeoutMillis: 30000
+    },
 }
