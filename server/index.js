@@ -1,3 +1,6 @@
+//SCRUM MASTER: Não foi possível implementar o CRUD por completo dentro do nosso site, está faltando o update e delete.
+//SCRUM MASTER: Dos membros, o que mais teve atividade dentro do site foi o Leandro Giacomini, porém ele teve auxílio dos demais, que participaram tanto na realização dos testes.
+
 import express, { response } from 'express'
 import mysql from 'mysql'
 import cors from 'cors'
