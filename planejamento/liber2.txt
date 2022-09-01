@@ -1,0 +1,22 @@
+create database Liber
+
+use Liber
+
+create table gen(
+	nome varchar(50) not null,
+	statusGen int not null,
+	genID int identity(1,1) primary key
+
+)
+
+create table liv(
+	nome varchar(50) not null,
+	statusLiv int not null,
+	pathLiv varchar(255) not null,
+	insertDate varchar(20) not null,
+	modDate varchar(20),
+	fkGen int not null,
+	constraint FK foreign key (fkGen) references gen(genID),
+	livID int identity(1,1) primary key
+
+)
