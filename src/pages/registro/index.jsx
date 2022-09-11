@@ -27,7 +27,7 @@ export function Registro(){
             ajeitar a data do usuário, ficando no padrão brasileiro (Dia/mês/ano)*/
 
             const current = new Date()
-            const data = `0${current.getDate()}/0${current.getMonth()+1}/${current.getFullYear()}`
+            const data = `${current.getDate()}/${current.getMonth()+1}/${current.getFullYear()}`
 
             /*Axios serve para enviar as variáveis do "HandleChangeValues" para o backend, utilizando o método
             post.
@@ -36,12 +36,11 @@ export function Registro(){
             Separado por uma virgula vem as variáveis que serão enviadas: Nome, email, senha, type(tipo de usuário)
             e o dia atual.*/
 
-            Axios.post('http://localhost:3001/user/register',{
+            Axios.post('http://localhost:3001/usuario/insert',{
             nome:values.nome,
             email:values.email,
             senha:values.senha,
-            type: 1,
-            dia: data}).then((response)=>(console.log(response)))
+            insertDate: data}).then((response)=>(console.log(response)))
             
             
     };

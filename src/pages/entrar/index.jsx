@@ -40,13 +40,13 @@ export function Login(){
         apos ser conferido no "if" o navigate muda a página para a pagina conteudo.
         "Replace:true" serve para o usuário entrar na pagina e não poder retornar no histórico*/
 
-        Axios.post("http://localhost:3001/login", {
+        Axios.post("http://localhost:3001/usuario/login", {
             email: values.email,
             senha: values.senha
         }).then((response) =>{
     
             if (values.email == response.data[0].email && values.senha ==  response.data[0].senha){
-                navigate('/generos', {replace: true})
+              //  navigate('/generos', {replace: true})
             }
         })
         

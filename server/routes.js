@@ -1,37 +1,14 @@
-/*
-Não foi passado para MVC o código. Tudo estará na pasta 'index.js' por enquanto.
+import express from 'express'
+import { UsuarController } from './src/controllers/usuarCtrl.js'
 
-import express from 'express';
-import mysql from 'mysql'
-import { dbConfig } from './database.js';
-const routes = express.Router();
+//as rotas que enviam dados para o controller.
 
-const app = express()
-const db = mysql.createConnection(dbConfig)
+const routes = express.Router()
 
-routes.get("/", (req, res) => {
-    return res.status(200).send("Server running");
-})
+routes.get('/usuario/get', UsuarController.getUser)
+routes.post('/usuario/insert', UsuarController.insertUser)
+routes.put('/usuario/update/:userID', UsuarController.updateUser)
+routes.delete('/usuario/delete/:userID', UsuarController.deleteUser)
+routes.post('/usuario/login', UsuarController.loginUser)
 
-routes.post('/register',(req, res)=>{
-   
-    const { nome } = req.body;
-    const { email } = req.body;
-    const { senha } = req.body;
-    const { type } = req.body;
-    const { dia } = req.body;
-    
-
-    let SQL = "insert into usuar(email, fkImg, insertDate, modDate, nome, nomePlum, senha, statusUser) values(?, '1', ?,'',?,'',?, ?) "    
-    
-    db.query(SQL,[email, dia, nome, senha, type], (err,result)=>{
-        console.log(err)
-    })
-
-    //db.end(console.log('finalizado a ligação'))
-
-})
-
-    
-
-export { routes }*/
+export { routes }
