@@ -1,20 +1,14 @@
+import express from 'express'
+import { UsuarController } from './src/controllers/usuarCtrl.js'
 
-//Não foi passado para MVC o código. Tudo estará na pasta 'index.js' por enquanto.
+//as rotas que enviam dados para o controller.
 
-import express from 'express';
-import mysql from 'mysql'
-import { dbConfig } from './src/utils/database.js';
-const routes = express.Router();
+const routes = express.Router()
 
-const app = express()
-const db = mysql.createConnection(dbConfig)
-
-routes.get("/", (req, res) => {
-    return res.status(200).send("Server running");
-})
-
-routes.post('/register')
-
-    
+routes.get('/usuario/get', UsuarController.getUser)
+routes.post('/usuario/insert', UsuarController.insertUser)
+routes.put('/usuario/update/:userID', UsuarController.updateUser)
+routes.delete('/usuario/delete/:userID', UsuarController.deleteUser)
+routes.post('/usuario/login', UsuarController.loginUser)
 
 export { routes }
