@@ -1,0 +1,53 @@
+.login-right { 
+    background-color: #56CBF9;
+    border-radius: 5px;
+    display: flex;
+    flex-direction:column;
+    justify-content: center;
+    align-items: center;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 12rem;
+    margin-bottom: 12rem;
+    width: 400px;
+    height: 400px;
+}
+
+.login-right h1 {
+    font-size: 30px;
+    font-family: Century Gothic;
+    margin-bottom: 25px;
+}
+
+.login-right h4 {
+    margin-top: 40px;
+    font-size: 15px;
+    font-weight: 500;
+    color: rgb(0, 0, 0);
+}
+
+.login-right a {
+    color: black;
+    font-size: 15px;
+}
+
+.login-right button {
+    width: 85%;
+    background-color: #ffffff;
+    color: black;
+    font-weight: 800;
+    height: 50px;
+    border-radius: 5px;
+    font-size: 18px;
+    margin-top: 8px;
+    border: none;
+    font-family: Century Gothic;
+
+    outline-width: 0;
+}
+
+.login-right button:hover {
+    background-color: #F05365;
+    color: #EFF2F5;
+    cursor: pointer;
+}

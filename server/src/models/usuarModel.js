@@ -23,7 +23,7 @@ export class Usuar{
         if(email == '' || email == null || email == undefined){
             this.email = ''
         }else{
-            this.email = email
+            this.email = email 
         }
 
         if(senha == '' || senha == null || senha == undefined){
