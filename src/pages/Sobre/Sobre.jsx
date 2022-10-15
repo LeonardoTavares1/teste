@@ -1,20 +1,19 @@
 import React from 'react';
-import { Footer } from '../Components/footer/Style';
+import { All } from '../../Style/all';
+import { Foter } from '../Components/footer/Footer';
 import { App } from '../Components/Navbar/Navbar';
-import { Centro, Conteudo, Principal } from './Style';
+import { Centro, Principal } from './Style';
 
 export function Sobre(){
     return(
-        <>
-        <Conteudo>
+        <All>
         <App />
             <Centro>
                 <Principal>
                 <h1>SOBRE NÓS</h1>
                 </Principal>
             </Centro>
-        <Footer />
-        </Conteudo>
-        </>
+        <Foter />
+        </All>
     )
 }

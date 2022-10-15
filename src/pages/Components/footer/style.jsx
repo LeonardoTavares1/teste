@@ -1,7 +1,8 @@
 import styled from "styled-components";
+import { Primario } from "../../../Style/Paleta";
 
 export const Footer = styled.div`
-    background-color: #56CBF9;
+    background-color: ${Primario};
     font-size: larger;
     color: dark;
     width: 100%;

@@ -1,2 +1,1 @@
-import styled from "styled-components";
-
+export const Primario = `#56CBF9`

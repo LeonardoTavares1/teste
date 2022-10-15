@@ -1,7 +1,8 @@
 import styled from "styled-components";
+import { Primario } from "../../Style/Paleta";
 
-export const Cadastrar = styled.div`
-    background-color: #56CBF9;
+export const Cadastrar = styled.form`
+    background-color: ${Primario};
     border-radius: 5px;
     display: flex;
     flex-direction:column;

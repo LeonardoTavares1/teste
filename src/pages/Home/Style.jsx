@@ -12,17 +12,6 @@ export const Conteudo = styled.div`
 
 `;
 
-export const Centro = styled.div`
-
-    display: flex;
-    flex-direction: row;
-    flex-grow: 5;
-    max-height: 100%;
-    max-width: 100%;
-    min-height: 100%;
-    min-width: 100%;
-
-`;
 
 export const Principal = styled.div`
     display: flex;
@@ -38,6 +27,7 @@ export const Principal = styled.div`
     margin: auto;
     font-size: 14px;
     margin-top: 7rem;
+    margin-bottom: 7rem;
 
 `;
 

@@ -88,6 +88,18 @@ export class Usuar{
         }
     }
 
+    async getProfile(){
+        try {
+            const { recordset } = await con.query(`select nome, insertDate, fkImg, nomePlum, statusUser, userID from usuar where nome = '${this.nome}'`)
+            return recordset
+        } 
+        catch (error)
+        {
+            console.log('error model ' + error)
+            return error(error)
+        }
+    }
+
     async insert(){
         try {
             const { rowsAffected } = con.query(`insert into usuar values ('${this.email}', 
@@ -131,8 +143,8 @@ export class Usuar{
 
     async login(){
         try {
-            const { recordset } = await con.query(`SELECT email, senha, userID FROM usuar 
-                WHERE email = '${this.email}' and senha = ${this.senha}`)
+            const { recordset } = await con.query(`SELECT * FROM usuar 
+                WHERE email = '${this.email}' and senha = ${this.senha} and statusUser = 1`)
             if (recordset.length > 0)
                 return recordset
             else

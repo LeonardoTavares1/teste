@@ -3,9 +3,7 @@ import { Inputs } from '../Components/inputs/inputs';
 import { Cadastrar } from '../Cadastro/style';
 import { Button } from '../Components/buttons/buttons';
 import { All } from '../../Style/all';
-import { useNavigate } from 'react-router-dom';
-import Axios from 'axios';
-import { AppContext } from '../../variaveis/Context';
+import { AxiosUser } from '../../services/axios';
 
 export function Login(){
 
@@ -18,22 +16,12 @@ export function Login(){
         }))
     };
 
-    const navigate = useNavigate()
-
     const HandleClickButton = () =>{
-        Axios.post("http://localhost:3001/usuario/login", {
-            email: values.email,
-            senha: values.senha
-        }).then((response) =>{
-            if (values.email == response.data[0].email && values.senha ==  response.data[0].senha){
-                AppContext.user = response
-                
-                navigate("/", {replace: true})
-                
-                
-
-            }
-        })
+        if(!values.email || !values.senha){
+            console.error("Certifique de que preencheu todos os campos!");
+        }else{
+            new AxiosUser().axiosLogin(values.email, values.senha)
+        }
     }
 
     return(
@@ -47,7 +35,7 @@ export function Login(){
 
                     <Inputs seletor={3} id="senha" name="senha" type="password" placeholder="Senha"  onChange={HandleChangeValues}/>
                     
-                    <Button type="submit" onClick={() => HandleClickButton()} texto="Enviar"/>
+                    <Button type="button" onClick={() => HandleClickButton()} texto="Enviar"/>
                     
                     <a type="submit" href="#">Esqueceu a senha?</a>
                     

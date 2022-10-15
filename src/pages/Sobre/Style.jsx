@@ -5,7 +5,7 @@ export const Conteudo = styled.div`
     background-color: white;
     max-height: 100%;
     max-width: 100%;
-    min-height: 102vh;
+    min-height: 100vh;
 
     display: flex;
     flex-direction: column;

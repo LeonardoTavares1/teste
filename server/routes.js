@@ -10,5 +10,6 @@ routes.post('/usuario/insert', UsuarController.insertUser)
 routes.put('/usuario/update/:userID', UsuarController.updateUser)
 routes.delete('/usuario/delete/:userID', UsuarController.deleteUser)
 routes.post('/usuario/login', UsuarController.loginUser)
+routes.post('/usuario/getProfile', UsuarController.getUserProfile)
 
-export { routes }
+export { routes } 

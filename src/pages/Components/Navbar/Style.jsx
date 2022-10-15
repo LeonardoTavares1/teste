@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import { Primario } from "../../../Style/Paleta";
 
 
 const Container = styled.div`
@@ -19,7 +20,7 @@ const Container = styled.div`
 
 const Navbar = styled.div`
 
-    background-color: #56CBF9;
+    background-color: ${Primario};
     width: 100%;
     margin-right: 100%;
     display: flex;

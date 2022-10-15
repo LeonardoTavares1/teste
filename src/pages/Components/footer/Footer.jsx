@@ -6,7 +6,7 @@ export function Foter(){
     return(
             <Footer>
                 <div>
-                    <ItemAbout ><b>&nbsp;&nbsp;Todos os direitos reservados</b></ItemAbout>
+                    <ItemAbout ><b>Todos os direitos reservados</b></ItemAbout>
                     <br></br>
                     <ItemPara>Política de Privacidade</ItemPara>
                     <br></br>

@@ -9,15 +9,30 @@ acelera bastante o trabalho.*/
 export class UsuarController{
     static async getUser(req, res){
         try {
-                const produtos = await Usuar.get()
-                return res.status(200).json(produtos)
+                const usuarios = await Usuar.get()
+                return res.status(200).json(usuarios)
         } 
         catch (error) 
         {
             console.log(error)
             return res.status(500).json(error)
+        } 
+    }
+
+    static async getUserProfile(req, res){
+        try {
+                const { email, senha, nome, nomePlum, statusUser, insertDate, modDate,fkImg } = req.body
+                const usuario = await new Usuar(email, senha, nome, nomePlum, statusUser, insertDate, modDate,fkImg).getProfile()
+                return res.status(200).json(usuario)
+        } 
+        catch (error) 
+        {
+            console.log(error) 
+            return res.status(500).json(error)
         }
     }
+
+    
 
 
     static async insertUser(req, res){
