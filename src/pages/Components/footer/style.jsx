@@ -6,8 +6,7 @@ export const Footer = styled.div`
     font-size: larger;
     color: dark;
     width: 100%;
-    padding-top: 10px;
-    min-height: 8vh;
+    height: 8%;
     text-align: center;
     font-family: 'Sen', sans-serif;
     align-items: center;
@@ -15,9 +14,9 @@ export const Footer = styled.div`
 
 `
 export const ItemAbout = styled.p`
-    color: #2b2b2b;
+    color: #2b2b2b; 
     font-size: 2em;
-    margin-top: 10px;
+    margin-top: 1rem;
     font-family: Arial, Helvetica, sans-serif;
 
 `

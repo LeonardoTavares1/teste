@@ -2,33 +2,19 @@ import styled from "styled-components";
 import { Primario } from "../../../Style/Paleta";
 
 
-const Container = styled.div`
-
-    background-color: #ffafcc;
-    display: flex;
-    flex-direction: row;
-    height: 100%;
-    height: 100%;
-    @media (min-widht: 600px) {
-        #root{
-            display: flex;
-        }
-        
-    }
-
-`;
-
-const Navbar = styled.div`
+export const Navbar = styled.div`
 
     background-color: ${Primario};
     width: 100%;
-    margin-right: 100%;
+    height: 8%;
+
+    margin-right: 100%; 
     display: flex;
     justify-content: space-between;
 
 `;
 
-const ProfileContainer = styled.div`
+export const ProfileContainer = styled.div`
 
     display: flex;
     align-items: center;
@@ -36,7 +22,7 @@ const ProfileContainer = styled.div`
 
 `;
 
-const Image = styled.img`
+export const Image = styled.img`
 
     width: 7rem;
     height: 6rem;
@@ -44,7 +30,7 @@ const Image = styled.img`
 
 `;
 
-const Title = styled.h2`
+export const Title = styled.h2`
 
     font-size: 2rem;
     font-family: Century Gothic;
@@ -52,7 +38,7 @@ const Title = styled.h2`
 
 `;
 
-const Links = styled.ul`
+export const Links = styled.ul`
 
     display: flex;
     align-items: center;
@@ -66,7 +52,7 @@ const Links = styled.ul`
 
 `;
 
-const Link = styled.li`
+export const Link = styled.li`
 
     text-decoration: none;
 
@@ -79,4 +65,3 @@ export const link = styled.a`
 
 `;
 
-export {Container, Navbar, ProfileContainer, Image, Title, Link , Links};

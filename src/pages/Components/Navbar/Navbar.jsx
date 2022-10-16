@@ -1,5 +1,5 @@
 import React from 'react';
-import { Container, Navbar, ProfileContainer, Image, Title, Link, Links } from './Style.jsx';
+import { Navbar, ProfileContainer, Image, Title, Link, Links } from './Style.jsx';
 import { NavLink } from 'react-router-dom';
 import Logo from '../../../assets/logo.svg';
 import { getToken } from '../../../services/auth.jsx';
