@@ -11,10 +11,10 @@ export const db = {
     database:'LiberT',
     options:{
         enableArithAbort: true,
-        encrypt: false, 
+        encrypt: false,
         trustServerCertificate: true
     },
-    connectionTimeout: 1500, 
+    connectionTimeout: 1500,
     pool:{
         max:10, 
         min:0, 
