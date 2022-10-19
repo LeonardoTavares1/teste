@@ -37,7 +37,7 @@ export function Cadastro(){
                     <h1>Crie sua conta</h1>
 
 
-                    <Inputs seletor={1} id="nome" name="nome" type="email" placeholder="Nome completo" onChange={HandleChangeValues}/>
+                    <Inputs seletor={1} id="nome" name="nome" type="text" placeholder="Nome completo" onChange={HandleChangeValues}/>
 
                     <Inputs seletor={2} id="email" name="email" type="email" placeholder="Seu email" onChange={HandleChangeValues} />
 
