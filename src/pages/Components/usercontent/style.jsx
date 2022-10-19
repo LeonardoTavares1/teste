@@ -53,6 +53,17 @@ export const Info = styled.div`
 
 `
 
+export const Inf = styled.div`
+    width: 50%;
+    height: 100%;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding-left: 50%;
+
+`
+
 export const Obras = styled.div`
     background-color: brown;
     width: 100%;

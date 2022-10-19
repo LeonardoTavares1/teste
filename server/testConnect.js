@@ -17,7 +17,7 @@ export async function testCon(){
         if (pool._connected == true){
             console.log('Conexão funcionando')
             pool.close()
-            return true
+            return true 
         }else{
             console.log('erro na conexão ' + pool)
             pool.close()

@@ -1,8 +1,11 @@
-import { getToken } from "../../../services/auth"
+import { getToken, Token } from "../../../services/auth"
 import { All } from "../../../Style/all"
+import { Button, Button2 } from "../buttons/buttons"
+import { Botao } from "../buttons/style"
 import { Foter } from "../footer/Footer"
 import { App } from "../Navbar/Navbar"
-import { ProfileAlign, Nome, IMGProfile, Info, Obras, Profile, UserContent } from "./style"
+import { ProfileAlign, Nome, IMGProfile, Info, Obras, Profile, UserContent, Inf } from "./style"
+import Axios from 'axios'
 
 export function OtherUser(user){
     const usuario = user.user
@@ -28,9 +31,9 @@ export function OtherUser(user){
                 </Info>
 
             
-                    <Obras>
+                <Obras>
                         <h1>aaaaaaaaaa</h1>
-                    </Obras>
+                </Obras>
                 
             </All>
         </UserContent>
@@ -38,6 +41,21 @@ export function OtherUser(user){
 }
 
 export function MyProfile(){
+    console.log(getToken())
+    
+    const buttonDel = () =>{
+
+        Axios.delete(`http://localhost:3001/usuario/delete/${getToken().userID}`).then(()=>{
+            localStorage.removeItem(Token)    
+            window.location.replace('/', {replace: true})
+        })
+       
+    }
+
+    const update = () =>{
+        window.location.replace('Perfil/../Update')
+    }
+
     return(
         <UserContent>
             <All>
@@ -54,6 +72,13 @@ export function MyProfile(){
 
                 <Info>
                     <h1>Conta criada em {getToken().insertDate}</h1>
+
+                    
+                        
+                        <Button2 type='button' onClick={() => buttonDel()} texto="Deletar" ></Button2>  
+                        <Button2 type='button' onClick={() => update()} texto="Update" ></Button2>
+                       
+                   
                 </Info>
 
                     <Obras>

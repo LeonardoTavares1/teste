@@ -7,6 +7,7 @@ import { Cadastro } from './pages/Cadastro/Cadastro.jsx'
 import { UserPage } from './pages/UserPage/UserPage.jsx'
 import { useEffect, useState } from 'react'
 import { AxiosUser } from './services/axios.jsx'
+import { Modal } from './services/utils.jsx'
 
 
 export function Rotas(){
@@ -20,6 +21,7 @@ export function Rotas(){
                         <Route path="/Login" element={<Login />}></Route>
                         <Route path="/Cadastro" element={<Cadastro />}></Route>
                         <Route path="/Perfil/:nome" element={<UserPage />}></Route>
+                        <Route path="/Perfil/Update" element ={<Modal />}></Route>
 
                     </Routes>
                 

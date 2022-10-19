@@ -17,7 +17,7 @@ export class AxiosUser{
 
     async axiosLogin(email, senha) {
         try{
-            const teste = Axios.post(`${localhost}/usuario/login`, {
+            Axios.post(`${localhost}/usuario/login`, {
                     email: email,
                     senha: senha
                 }).then((response) =>{

@@ -28,28 +28,38 @@ export function UserPage(){
     
     
     
-    if(user.nome === getToken().nome){ 
-        return(
-            <>
-
+    if(user !== undefined){ 
+        if(user.nome == getToken().nome){ 
+            return(
+                        <All>
+                            <App />
+                                <MyProfile /> 
+                            <Foter />
+                        </All>
+            )
+        }else{
+            return(    
                     <All>
                         <App />
-                            <MyProfile /> 
+    
+                        <All>
+                            <OtherUser user={user}/>
+                        </All>
+    
                         <Foter />
                     </All>
-
-            </>
-        )
+    
+            )
+        }
     }else{
         return(    
                 <All>
-                    <App />
+          
 
                     <All>
-                        <OtherUser user={user}/>
+                        <h1>Usuario inexistente</h1>
                     </All>
 
-                    <Foter />
                 </All>
 
         )

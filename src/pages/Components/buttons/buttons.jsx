@@ -1,4 +1,4 @@
-import { Botao } from "./style";
+import { Botao, BotaoD } from "./style";
 
 export function Button({type, onClick, texto}){
     
@@ -9,6 +9,19 @@ export function Button({type, onClick, texto}){
             >
             {texto}
         </Botao>
+    )
+    
+}
+
+export function Button2({type, onClick, texto}){
+    
+    return(
+        <BotaoD
+            type={type}
+            onClick={onClick}
+            >
+            {texto}
+        </BotaoD>
     )
     
 }
