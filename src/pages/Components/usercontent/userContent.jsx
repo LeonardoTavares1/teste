@@ -6,6 +6,7 @@ import { Foter } from "../footer/Footer"
 import { App } from "../Navbar/Navbar"
 import { ProfileAlign, Nome, IMGProfile, Info, Obras, Profile, UserContent, Inf } from "./style"
 import Axios from 'axios'
+import { AxiosUser } from "../../../services/axios"
 
 export function OtherUser(user){
     const usuario = user.user
@@ -56,6 +57,8 @@ export function MyProfile(){
         window.location.replace('Perfil/../Update')
     }
 
+ 
+
     return(
         <UserContent>
             <All>
@@ -75,7 +78,7 @@ export function MyProfile(){
 
                     
                         
-                        <Button2 type='button' onClick={() => buttonDel()} texto="Deletar" ></Button2>  
+                        <Button2 type='button' onClick={() => new AxiosUser().axiosDel()} texto="Deletar" ></Button2>  
                         <Button2 type='button' onClick={() => update()} texto="Update" ></Button2>
                        
                    

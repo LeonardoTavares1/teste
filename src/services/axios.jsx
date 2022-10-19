@@ -1,4 +1,5 @@
 import Axios  from "axios"
+import { getToken, Token } from "./auth"
 import { AppContext } from "./Context"
 
 const port = 3001
@@ -9,9 +10,10 @@ const localhost = `http://localhost:${port}`
 export class AxiosUser{
 
     async axiosGet(){
-        Axios.get('http://localhost:3001/usuario/get').then((response) => {
+        return (Axios.get('http://localhost:3001/usuario/get').then((response) => {
             setUsuarios(response.data)
         })
+        )
     }
     
 
@@ -38,6 +40,26 @@ export class AxiosUser{
         }
 
     }
+
+    axiosDel(){
+
+        try {
+        Axios.delete(`http://localhost:3001/usuario/delete/${getToken().userID}`).then(()=>{
+            localStorage.removeItem(Token)    
+            window.location.replace('/', {replace: true})
+        })
+        } 
+        catch (error) 
+        {
+            console.log(error)
+        }
+
+            
+           
+        
+    }
+
+    
 
     MemesTest(){
         window.location.replace('/Sobre')
