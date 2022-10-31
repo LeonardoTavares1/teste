@@ -39,8 +39,8 @@ export class ImgModel{
 
     async insert(){
         try {
-            const { rowsAffected } = con.query(`insert into img values('${this.originalname}',
-             '${this.path}', '${this.keyImg}', 1, '${DateNow()}', '')`)
+            /*const { rowsAffected } = con.query(`insert into img values('${this.originalname}',
+             '${this.path}', '${this.keyImg}', 1, '${DateNow()}', '')`)*/
             return rowsAffected
         } 
         catch (error) 

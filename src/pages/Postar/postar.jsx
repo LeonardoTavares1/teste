@@ -4,8 +4,11 @@ import { Cadastrar } from "../Cadastro/style";
 import { Button, Button2 } from "../Components/buttons/buttons";
 import { DropFile, Inputs } from "../Components/inputs/inputs";
 import { Document, Page, pdfjs } from 'react-pdf';
+import Axios from 'axios'
 
 pdfjs.GlobalWorkerOptions.workerSrc = `//cdnjs.cloudflare.com/ajax/libs/pdf.js/${pdfjs.version}/pdf.worker.js`
+
+//https://www.filestack.com/fileschool/react/react-file-upload/
 
 export function Postar(){
 
@@ -19,18 +22,32 @@ export function Postar(){
         setNumPages(numPages);
     }
     
-
+    
+    
 
     const Novo = () =>{
-        console.log(image)
+        const formData = new FormData()
+        formData.append('file', image)
+        formData.append('filename', image.name)
+        const config = {
+        headers: {
+            'content-type': 'multipart/form-data'
+            }
+        }
+        Axios.post('http://localhost:3001/awsTeste', FormData, config).then(()=>{
+            console.log('Certo')
+        
+        })
     }
 
+    console.log(image)
+
     const GetImg = (value) =>{
-        setImage({file: URL.createObjectURL(value.target.files[0])}) 
+        setImage({file: value.target.files[0]}) 
     }
 
     const GetPdf = (value) =>{
-        setPdf({file: URL.createObjectURL(value.target.files[0])}) 
+        setPdf({file: value.target.files[0]}) 
     }
 
     const Nada = () =>{
@@ -75,7 +92,7 @@ export function Postar(){
                 onChange={GetPdf}
                 texto="Envie o arquivo PDF de sua obra"
             />
-            <img src={image.file}></img>
+            
             <Button2 type="button" onClick={() => Novo()}>Teste</Button2>
             
             </Cadastrar>
@@ -87,6 +104,7 @@ export function Postar(){
                     <Page key={`page_${index + 1}`} pageNumber={index + 1} />
                 ))}
             </Document>
+            <img src={image.file}></img>
         </All>
     )
 }

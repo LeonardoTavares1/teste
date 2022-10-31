@@ -9,9 +9,9 @@ export class ImgCtrl{
     } 
 
     static async Env(req, res){
-        const { originalname, location, key } = req.file
+       /* const { originalname, location, key } = req.file
         const response = await new ImgModel( originalname, location, key).insert()  
-        return res.status(200).json(response) 
+        return res.status(200).json(response) */
     } 
 
     static async deleteImg(req, res){

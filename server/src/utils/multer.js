@@ -40,14 +40,13 @@ const storageTypes = {
 
 export const multerConfig = {
     dest: path.resolve(__dirname, '..', 'tmp', 'uploads'),
-    storage: storageTypes['s3'], 
+    storage: storageTypes['local'], 
     limits:{
         fileSize: 100 * 1024 * 1024,
     }, 
     fileFilter:(req, file, cb) =>{
         const allowedMimes =[
             'image/jpeg',
-            'image/pjpeg',
             'image/png',
             'application/pdf'
         ]
