@@ -19,15 +19,17 @@ export const Principal = styled.div`
     align-items: center;
     background-color: white;
     color: black;
-    max-height: 100%;
-    max-width: 40%;
-    min-width: 60%;
+    height: 100%;
+    max-height: auto;
+    max-width: 100%;
+    width: 100%;
     display: block;
     text-align: center;
     margin: auto;
-    font-size: 14px;
+    font-size: 100%;
     margin-top: 7rem;
     margin-bottom: 7rem;
+
 
 `;
 

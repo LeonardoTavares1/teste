@@ -6,13 +6,26 @@ export const Footer = styled.div`
     font-size: larger;
     color: dark;
     width: 100%;
-    height: 8%;
+    max-width: 100%;
+    height: 100%;
+    max-height: 20%;
     text-align: center;
     font-family: 'Sen', sans-serif;
+    display: flex;
     align-items: center;
     justify-content: center;
 
 `
+
+export const CenterText = styled.div`
+    max-width: 30rem;
+    width: 100%;
+    max-height: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+`
+
 export const ItemAbout = styled.p`
     color: #2b2b2b; 
     font-size: 2em;

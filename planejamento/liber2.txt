@@ -22,7 +22,9 @@ create table liv(
 )
 
 create TABLE img(
-	pathImg varchar(255) not null,
+	originalName varchar(255) not null,
+	pathImg varchar(1000) not null,
+	keyImg varchar(100) not null,
     statusImg int not null,
     insertDate varchar(20) not null,
     modDate varchar(20) ,
@@ -96,4 +98,3 @@ create table posImg (
     posImgID int identity(1,1) PRIMARY key 
 
 )
-

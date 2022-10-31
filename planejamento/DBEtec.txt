@@ -28,3 +28,11 @@ este abaixo serve para eu acessar mais rapidamente o banco em casa
     port: 1433,
     user:'sa',
     password:'0192',
+
+    STORAGE_TYPE=local
+
+    AWS_ACCESS_KEY_ID=AKIA5GWTJESNNY4GRBES
+
+    AWS_SECRET_ACCESS_KEY=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
+
+    AWS_DEFAULT_REGION=us-east-1

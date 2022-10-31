@@ -32,14 +32,11 @@ export class UsuarController{
         }
     }
 
-    
-
-
     static async insertUser(req, res){
         try {
                 const { email, senha, nome, nomePlum, statusUser, insertDate, modDate,fkImg } = req.body
-                const newProd = await new Usuar( email, senha, nome, nomePlum, statusUser, insertDate, modDate,fkImg).insert()
-                return res.status(200).json(newProd)
+                const newUser = await new Usuar( email, senha, nome, nomePlum, statusUser, insertDate, modDate,fkImg).insert()
+                return res.status(200).json(newUser)
         } 
         catch (error) 
         {
@@ -52,8 +49,8 @@ export class UsuarController{
         try {
                 const { userID } = req.params
                 const { email, senha, nome, nomePlum, statusUser, insertDate, modDate,fkImg } = req.body
-                const alterProd = await new Usuar(email, senha, nome, nomePlum, statusUser, insertDate, modDate,fkImg, userID).update()
-                return res.status(200).json(alterProd)
+                const alterUser = await new Usuar(email, senha, nome, nomePlum, statusUser, insertDate, modDate,fkImg, userID).update()
+                return res.status(200).json(alterUser)
         } 
         catch (error) 
         {
@@ -66,8 +63,8 @@ export class UsuarController{
         try {
                 const { userID } = req.params
                 const { email, senha, nome, nomePlum, statusUser, insertDate, modDate,fkImg } = req.body
-                const delProd = await new Usuar(email, senha, nome, nomePlum, statusUser, insertDate, modDate,fkImg, userID).delete()
-                return res.status(200).json(delProd)
+                const delUser = await new Usuar(email, senha, nome, nomePlum, statusUser, insertDate, modDate,fkImg, userID).delete()
+                return res.status(200).json(delUser)
         } 
         catch (error) 
         {

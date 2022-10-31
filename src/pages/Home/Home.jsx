@@ -28,15 +28,43 @@ export function Home(){
 
             <All >
                 <App />
-                <Centro>
+        
                     
                     <Principal>
                         <button onClick={() => ApagaMeme()}>ApagaMeme</button>
                         <button onClick={() => TestaMeme()}>TestaMeme</button>
-    
+                        <All>
+                        <h1>Teste</h1>
+                        <h1>Teste</h1>
+                        <h1>Teste</h1>
+                        <h1>Teste</h1>
+                        <h1>Teste</h1>
+                        <h1>Teste</h1>
+                        <h1>Teste</h1>
+                        <h1>Teste</h1>
+                        <h1>Teste</h1>
+                        <h1>Teste</h1>
+                        <h1>Teste</h1>
+                        <h1>Teste</h1>
+                        <h1>Teste</h1>
+                        <h1>Teste</h1>
+                        <h1>Teste</h1>
+                        <h1>Teste</h1>
+                        <h1>Teste</h1>
+                        <h1>Teste</h1>
+                        <h1>Teste</h1>
+                        <h1>Teste</h1>
+                        <h1>Teste</h1>
+                        <h1>Teste</h1>
+                        <h1>Teste</h1>
+                        <h1>Teste</h1>
+                        <h1>Teste</h1>
+                        <h1>Teste</h1>
+                        <h1>Teste</h1>
+                        </All>
                     </Principal>
                     
-                </Centro>
+                
                 <Foter />
            </All >
     )

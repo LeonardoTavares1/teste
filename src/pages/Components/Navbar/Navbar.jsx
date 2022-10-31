@@ -18,10 +18,14 @@ export function App() {
                     </ProfileContainer>
                     <Links>
                         <Link>
-                            <a href='/' className='link'>HOME</a>
+                            <a href='/' className='link'>Home</a>
                         </Link>
                         <Link>
-                            <a href='/Sobre' className='link'>SOBRE</a>
+                            <a href='/Post/Create' className='link'>Postar</a>
+                        </Link>
+                        
+                        <Link>
+                            <a href='/Sobre' className='link'>Sobre</a>
                         </Link>
                         <Link>
                             <a href={`/Perfil/${getToken().nome}`} className='link'>{getToken().nome}</a>

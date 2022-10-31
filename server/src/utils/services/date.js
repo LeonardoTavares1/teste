@@ -1,6 +1,3 @@
-import { useEffect } from "react"
-import { useState } from "react"
-
 export const current = new Date()
 
 
@@ -24,7 +21,7 @@ export function Mes(){
     }
 }
 
-export function Data(){
+export function DateNow(){
 
     const data = `${Dia()}/${Mes()}/${current.getFullYear()}`
 

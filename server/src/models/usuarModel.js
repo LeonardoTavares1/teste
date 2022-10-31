@@ -1,4 +1,5 @@
 import { poolConnect } from "../../poolConnect.js"
+import { DateNow } from "../utils/services/date.js"
 
 const con = await poolConnect()
 
@@ -19,7 +20,7 @@ banco, assim criando uma maior segurança.
 */
 
 export class Usuar{
-    constructor(email, senha, nome, nomePlum, statusUser, insertDate, modDate,fkImg, userID){
+    constructor(email, senha, nome, nomePlum, statusUser, fkImg, userID){
         if(email == '' || email == null || email == undefined){
             this.email = ''
         }else{
@@ -50,18 +51,6 @@ export class Usuar{
             this.statusUser = 1
         }
 
-        if(insertDate == '' || insertDate == null || insertDate == undefined){
-            this.insertDate = ''
-        }else{
-            this.insertDate = insertDate
-        }
-
-        if(modDate == '' || modDate == null || modDate == undefined){
-            this.modDate = ''
-        }else{
-            this.modDate = modDate
-        }
-
         if(fkImg == '' || fkImg == null || fkImg == undefined){
             this.fkImg = 1
         }else{
@@ -90,7 +79,8 @@ export class Usuar{
 
     async getProfile(){
         try {
-            const { recordset } = await con.query(`select nome, insertDate, fkImg, nomePlum, statusUser, userID from usuar where nome = '${this.nome}'`)
+            const { recordset } = await con.query(`select nome, insertDate, fkImg, nomePlum, statusUser, userID from usuar 
+            where nome = '${this.nome}' and statusUser = 1`)
             return recordset
         } 
         catch (error)
@@ -104,7 +94,7 @@ export class Usuar{
         try {
             const { rowsAffected } = con.query(`insert into usuar values ('${this.email}', 
             '${this.senha}','${this.nome}', '${this.nomePlum}', ${this.statusUser}, 
-            '${this.insertDate}', '${this.modDate}', ${this.fkImg})`)
+            '${DateNow()}', '', ${this.fkImg})`)
             return true
         } 
         catch (error) 
@@ -117,7 +107,7 @@ export class Usuar{
     async update(){
         try {
             const { rowsAffected } = await con.query(`update usuar set email = '${this.email}' , 
-            senha = '${this.senha}', nome = '${this.nome}', nomePlum = '${this.nomePlum}', modDate = '${this.modDate}',
+            senha = '${this.senha}', nome = '${this.nome}', nomePlum = '${this.nomePlum}', modDate = '${DateNow()}',
             fkImg = ${this.fkImg} where userID = ${this.userID}`)
             return rowsAffected
         } 
