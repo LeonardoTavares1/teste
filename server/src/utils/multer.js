@@ -47,6 +47,7 @@ export const multerConfig = {
     fileFilter:(req, file, cb) =>{
         const allowedMimes =[
             'image/jpeg',
+            'image/jpg',
             'image/png',
             'application/pdf'
         ]

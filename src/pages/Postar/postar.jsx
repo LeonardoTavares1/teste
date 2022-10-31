@@ -26,28 +26,31 @@ export function Postar(){
     
 
     const Novo = () =>{
-        const formData = new FormData()
-        formData.append('file', image)
-        formData.append('filename', image.name)
-        const config = {
-        headers: {
-            'content-type': 'multipart/form-data'
-            }
-        }
-        Axios.post('http://localhost:3001/awsTeste', FormData, config).then(()=>{
-            console.log('Certo')
+            const url = 'http://localhost:3001/awsTeste';
+            const formData = new FormData();
+            formData.append('file',image);
+            formData.append('name', image.name);
+            console.log(formData)
+            const config = {
+              headers: {
+                'content-type': 'multipart/form-data',
+              },
+            };
+            Axios.post(url, formData, config.headers).then((response) => {
+              console.log(response.data);
+            });
         
-        })
+          
     }
 
-    console.log(image)
+    console.log(gpdf)
 
     const GetImg = (value) =>{
-        setImage({file: value.target.files[0]}) 
+        setImage(value.target.files[0]) 
     }
 
     const GetPdf = (value) =>{
-        setPdf({file: value.target.files[0]}) 
+        setPdf(value.target.files[0]) 
     }
 
     const Nada = () =>{

@@ -41,7 +41,7 @@ export class ImgModel{
         try {
             /*const { rowsAffected } = con.query(`insert into img values('${this.originalname}',
              '${this.path}', '${this.keyImg}', 1, '${DateNow()}', '')`)*/
-            return rowsAffected
+            return true
         } 
         catch (error) 
         {
