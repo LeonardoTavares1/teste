@@ -6,10 +6,10 @@ Recomendo o link de um video para a configuração do servidor: https://youtu.be
 OBSERVE SE O BANCO ESTÁ COMO O DA ETEC, SE NÃO DARÁ ERRO*/
 
 export const db = {
-    server: '10.68.102.4',
+    server: 'DESKTOP-7C99J2K',
     port: 1433,
     user:'sa',
-    password:'Admin2018@',
+    password:'0192',
     database:'LiberT',
     options:{
         enableArithAbort: true,

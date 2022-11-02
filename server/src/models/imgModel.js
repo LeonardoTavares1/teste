@@ -8,6 +8,8 @@ const con = await poolConnect()
 const s3 = new aws.S3()
 // location, key
 
+
+
 export class ImgModel{
     constructor(originalname, path, keyImg, imgID){
 
@@ -39,9 +41,22 @@ export class ImgModel{
 
     async insert(){
         try {
-            /*const { rowsAffected } = con.query(`insert into img values('${this.originalname}',
-             '${this.path}', '${this.keyImg}', 1, '${DateNow()}', '')`)*/
-            return true
+            const { rowsAffected } = await con.query(`insert into img values('${this.originalname}',
+            '${this.path}', '${this.keyImg}', 1, '${DateNow()}', '')`)
+
+            const params = {
+                Bucket: 'libert', 
+                Key: `${this.keyImg}`
+            }
+
+            s3.getObject(params, function(err, data) {
+          
+                if (err)
+                    return err;
+         
+              let objectData = data.Body.toString('binary'); 
+              return objectData
+            })
         } 
         catch (error) 
         {

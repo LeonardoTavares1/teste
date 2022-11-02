@@ -40,7 +40,7 @@ const storageTypes = {
 
 export const multerConfig = {
     dest: path.resolve(__dirname, '..', 'tmp', 'uploads'),
-    storage: storageTypes['local'], 
+    storage: storageTypes['s3'], 
     limits:{
         fileSize: 100 * 1024 * 1024,
     }, 

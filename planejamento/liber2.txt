@@ -98,3 +98,10 @@ create table posImg (
     posImgID int identity(1,1) PRIMARY key 
 
 )
+
+insert into gen values ('Romance', 1), ('Histórico', 1), ('Conto', 1),  
+('Aventura', 1), ('Ação', 1), ('Ficção Científica', 1), ('Terror', 1), ('Poesia', 1), 
+('Crônica', 1), ('HQ', 1), ('Mangá', 1), ('Webtoon', 1), ('Drama', 1),
+('Suspense', 1), ('Psicológico', 1), ('Memórias', 1), ('Fantasia', 1),
+('Distopia', 1), ('Investigativo', 1), ('Ficção histórica', 1), ('Light Novel', 1),
+('Novel', 1), ('Reflexivo', 1), ('Humor', 1), ('Mistério', 1), ('Paranormal', 1)

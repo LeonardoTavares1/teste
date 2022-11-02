@@ -1,6 +1,6 @@
 import { ImgModel } from "../models/imgModel.js"
 
-export class ImgCtrl{
+export class FilesCtrl{
 
 
     static async GetImg(req, res){
@@ -8,10 +8,10 @@ export class ImgCtrl{
         return res.status(200).json(response) 
     } 
 
-    static async Env(req, res){
-       /* const { originalname, location, key } = req.file
-        const response = await new ImgModel( originalname, location, key).insert()  */
-        return res.status(200).json(true)
+    static async ImgInsert(req, res){
+        const { originalname, location, key } = req.file
+        const response = await new ImgModel( originalname, location, key).insert() 
+        return res.status(200).json(response)
     } 
 
     static async deleteImg(req, res){
