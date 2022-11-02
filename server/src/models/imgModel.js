@@ -11,7 +11,7 @@ const s3 = new aws.S3()
 
 
 export class ImgModel{
-    constructor(originalname, path, keyImg, imgID){
+    constructor(originalname, path, keyImg, statusImg, imgID){
 
         if(originalname == '' || originalname == null || originalname == undefined){
             this.originalname = ''
@@ -31,6 +31,12 @@ export class ImgModel{
             this.keyImg = keyImg 
         }
 
+        if(statusImg == '' || statusImg == null || statusImg == undefined){
+            this.statusImg = 1
+        }else{
+            this.statusImg = statusImg
+        }
+
         if(imgID == '' || imgID == null || imgID == undefined){
             this.imgID = ''
         }else{
@@ -44,19 +50,10 @@ export class ImgModel{
             const { rowsAffected } = await con.query(`insert into img values('${this.originalname}',
             '${this.path}', '${this.keyImg}', 1, '${DateNow()}', '')`)
 
-            const params = {
-                Bucket: 'libert', 
-                Key: `${this.keyImg}`
-            }
-
-            s3.getObject(params, function(err, data) {
-          
-                if (err)
-                    return err;
-         
-              let objectData = data.Body.toString('binary'); 
-              return objectData
-            })
+            const { recordset } = await con.query (`select imgID from img where keyImg = '${this.keyImg}' and statusImg = 1`)
+            
+            return recordset
+       
         } 
         catch (error) 
         {

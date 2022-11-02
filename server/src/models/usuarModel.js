@@ -68,6 +68,7 @@ export class Usuar{
     static async get(){
         try {
             const { recordset } = await con.query('select * from usuar')
+            
             return recordset
         } 
         catch (error)

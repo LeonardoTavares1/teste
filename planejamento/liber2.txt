@@ -10,13 +10,12 @@ create table gen(
 )
 
 create table liv(
-	nome varchar(100) not null unique,
+	nome varchar(100) not null ,
 	statusLiv int not null,
 	pathLiv varchar(255) not null,
 	insertDate varchar(20) not null,
 	modDate varchar(20),
-	fkGen int not null,
-	constraint FK foreign key (fkGen) references gen(genID),
+	keyLiv varchar(500) not null unique,
 	livID int identity(1,1) primary key
 
 )

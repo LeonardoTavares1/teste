@@ -17,7 +17,9 @@ export class AxiosUser{
             return (
                 (Axios.post(`http://localhost:3001/usuario/getProfile`, {
                 nome: nome
-            })))
+            })
+            )
+            )
 
         } 
         catch (error) 
@@ -34,7 +36,6 @@ export class AxiosUser{
             email:values.email,
             senha:values.senha
         }).then(()=>{
-            window.location.replace('/Login', {replace: true})
         
         })
     }
@@ -106,6 +107,70 @@ export class AxiosUser{
         {
             return error
         }
+    }
+
+    async axiosCreateImg(fileImg, config){
+        const formData = new FormData()
+        formData.append('file', fileImg)
+        formData.append('name', fileImg.name)
+        return((Axios.post(`${localhost}/img/insert`, formData, config)))
+    }
+
+    async axiosCreateLiv(filePdf, config){
+        const formData = new FormData()
+        formData.append('file', filePdf)
+        formData.append('name', filePdf.name)
+
+        return((Axios.post(`${localhost}/liv/insert`, formData, config)))
+    }
+
+    async axiosInsPost(text, livID){
+        return((Axios.post(`${localhost}/post/insert`, {
+            nome: text.nome,
+            desc: text.desc,
+            livID: livID,
+            userID: getToken().userID
+        })))
+    }
+
+    async axiosFKPosImg(postID, imgID){
+        return((Axios.post(`${localhost}/FKPosImg/insert`, {
+            postID: postID,
+            imgID: imgID
+        })))
+    }
+
+    async axiosFKPosGen(postID, genID){
+        return((Axios.post(`${localhost}/FKPosGen/insert`, {
+            postID: postID,
+            genID: genID
+        })))
+    } 
+
+    //Deus existe porque o codigo ali embaixo funciona.
+
+    async axiosCreatePost(fileImg, filePDF, config, text, gen){
+        
+        const getImgID = await this.axiosCreateImg(fileImg, config)
+        const imgID = getImgID.data[0].imgID
+        console.log(imgID)
+          
+        const getLivID = await this.axiosCreateLiv(filePDF, config)
+        const livID = getLivID.data[0].livID
+        console.log(livID)
+               
+        const getPostID = await this.axiosInsPost(text, livID)
+        const postID = getPostID.data[0].postID
+        console.log(postID)
+
+        this.axiosFKPosImg(postID, imgID)
+
+        this.axiosFKPosGen(postID, gen)
+                
+            
+       
+        
+
     }
 
     async MemesTest(){

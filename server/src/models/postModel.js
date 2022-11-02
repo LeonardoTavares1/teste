@@ -1,0 +1,70 @@
+import { poolConnect } from "../../poolConnect.js"
+import utf8 from 'utf8'
+import { DateNow } from "../utils/services/date.js"
+
+const con = await poolConnect()
+
+export class PostModel {
+    constructor(nome, desc, livID, statusPost,userID, postID ){
+        if(nome == '' || nome == null || nome == undefined){
+            this.nome = ''
+        }else{
+            this.nome = utf8.decode(nome) 
+        }
+        if(desc == '' || desc == null || desc == undefined){
+            this.desc = ''
+        }else{
+            this.desc = desc
+        }
+        if(livID == '' || livID == null || livID == undefined){
+            this.livID = ''
+        }else{
+            this.livID = livID
+        }
+
+        if(statusPost == '' || statusPost == null || statusPost == undefined){
+            this.statusPost = 1
+        }else{
+            this.statusPost = statusPost
+        }
+        if(userID == '' || userID == null || userID == undefined){
+            this.userID = ''
+        }else{
+            this.userID = userID
+        }
+        if(postID == '' || postID == null || postID == undefined){
+            this.postID = ''
+        }else{
+            this.postID = postID
+        }
+
+        
+    }
+
+    async insert(){
+        try {
+            const { rowsAffected } = await con.query(`insert into post values('${this.nome}',
+            '${this.desc}', 1, '${DateNow()}', '', ${this.userID}, ${this.livID}, 0)`)
+            
+            const { recordset } = await con.query (`select postID from post where titulo = '${this.nome}' and statusPost = 1`)
+            
+            return recordset
+       
+        } 
+        catch (error) 
+        {
+            console.log('error model ' + error)
+            return (error)
+        }
+    }
+
+}
+
+/*select * from post as pt
+inner join usuar as us on(pt.fkUser = us.userID)
+inner join posImg as pm on(pt.postID = pm.fkPost)
+inner join img as m on(pm.fkImg = m.imgID)
+
+inner join liv as l on(pt.fkLiv = l.livID)
+inner join genPos as gp on(pt.postID = gp.fkPos)
+inner join gen as g on (gp.fkGen = g.genID) */

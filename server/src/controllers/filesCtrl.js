@@ -1,4 +1,7 @@
+import { FKPosGen, FKPosImg } from "../models/fkModels.js"
 import { ImgModel } from "../models/imgModel.js"
+import { LivModel } from "../models/livModel.js"
+import { PostModel } from "../models/postModel.js"
 
 export class FilesCtrl{
 
@@ -13,6 +16,31 @@ export class FilesCtrl{
         const response = await new ImgModel( originalname, location, key).insert() 
         return res.status(200).json(response)
     } 
+
+    static async LivIns(req, res){
+        const { originalname, location, key } = req.file
+        const response = await new LivModel(originalname, location, key).insert()
+        return res.status(200).json(response) 
+    }
+ 
+    static async PostIns(req, res){
+        const { nome, desc, livID, userID } = req.body
+        const response = await new PostModel(nome, desc, livID,'', userID).insert()
+        return res.status(200).json(response) 
+    }
+
+    static async posImg(req, res){
+        const { postID, imgID } = req.body
+        const response = await new FKPosImg(postID, imgID).insert()
+        return res.status(200).json(response)
+    }   
+
+    static async posGen(req, res){
+        const { postID, genID } = req.body
+        const response = await new FKPosGen(postID, genID).insert()
+        return res.status(200).json(response)
+    }   
+
 
     static async deleteImg(req, res){
         try {
