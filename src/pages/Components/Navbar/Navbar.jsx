@@ -11,9 +11,11 @@ export function App() {
         return (
                 <Navbar>
                     <ProfileContainer>
-                        <Image src={Logo} />
+                        <a href='/'>
+                            <Image src={Logo} />
+                        </a>
                         <Title>
-                            LIBER
+                            <a href='/'>LIBER</a>
                         </Title> 
                     </ProfileContainer>
                     <Links>

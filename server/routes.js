@@ -4,6 +4,7 @@ import Multer from 'multer'
 import { multerConfig } from './src/utils/multer.js'
 import { FilesCtrl } from './src/controllers/filesCtrl.js'
 import { GenCtrl } from './src/controllers/genCtrl.js'
+import { PostCtrl } from './src/controllers/postCtrl.js'
 
 //as rotas que enviam dados para o controller.
 
@@ -25,6 +26,7 @@ routes.get('/gen/get', GenCtrl.GetGen)
 routes.post('/liv/insert', Multer(multerConfig).single('file'), FilesCtrl.LivIns)
 
 routes.post('/post/insert', FilesCtrl.PostIns)
+routes.get('/post/get', PostCtrl.getHomePost)
 
 routes.post('/FKPosImg/insert', FilesCtrl.posImg)
 

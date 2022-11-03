@@ -8,8 +8,9 @@ export const Navbar = styled.div`
     width: 100%;
     max-width: 100%;
     height: 100%;
-    max-height: 20%;
-
+    max-height: 7.5rem;
+    min-height: 7.5rem;
+    box-shadow: 5px -5px 20px #000;
     margin-right: 100%; 
     display: flex;
     justify-content: space-between;
@@ -48,6 +49,10 @@ export const Title = styled.h2`
     font-size: 2rem;
     font-family: Century Gothic;
     margin-left: 1rem;
+
+    a{
+        text-decoration: none;
+    }
 
     @media(max-width: 426px){
         font-size: 1.5rem;

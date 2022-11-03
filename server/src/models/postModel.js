@@ -58,6 +58,25 @@ export class PostModel {
         }
     }
 
+    static async get(){
+        try {
+            const { recordset } = await con.query(`select titulo, texto, postID, curtir, us.nome as userName, g.nome as genNome, pt.insertDate, pathImg, imgID, livID, userID from post as pt 
+                inner join usuar as us on(pt.fkUser = us.userID)
+                inner join posImg as pm on(pt.postID = pm.fkPost)
+                inner join img as m on(pm.fkImg = m.imgID)
+                inner join liv as l on(pt.fkLiv = l.livID)
+                inner join genPos as gp on(pt.postID = gp.fkPos)
+                inner join gen as g on (gp.fkGen = g.genID)
+                where statusUser = 1 and statusPost = 1 and statusLiv = 1 and statusImg = 1`) 
+                return recordset 
+            
+        } 
+        catch (error) 
+        {
+            return error
+        }
+    }
+
 }
 
 /*select * from post as pt

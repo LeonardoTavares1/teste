@@ -1,18 +1,17 @@
+import  Axios  from 'axios';
 import React from 'react';
+import { useEffect } from 'react';
+import { useState } from 'react';
 import { getToken, Token } from '../../services/auth.jsx';
 import { AxiosUser } from '../../services/axios.jsx';
 import { All } from '../../Style/all.jsx';
 import { Foter } from '../Components/footer/Footer.jsx';
 import { App } from '../Components/Navbar/Navbar.jsx';
-import { Centro } from '../Sobre/Style.jsx';
-import { Principal } from './Style.jsx';
+import { Alinhar, Books, Capa, Centraliza, Content, Margem, Separar } from './Style.jsx';
 
 export function Home(){
     
-    /*let recup = localStorage.getItem('token')
-    
-    const user = JSON.parse(recup)*/
-    console.log(getToken())
+    const [post, setPost] = useState()
 
     const ApagaMeme = () =>{
         localStorage.removeItem(Token)
@@ -20,52 +19,74 @@ export function Home(){
 
     }
 
-    const TestaMeme = () =>{
-        new AxiosUser().MemesTest()
-    }
+    useEffect(() => {
+        Axios.get("http://localhost:3001/post/get").then((response)=>{
+            setPost(response.data)
+        })
+
+    },[])
     
     return(
 
             <All >
                 <App />
-        
+                <Alinhar>
+                    <Centraliza>
+                        <Separar>
+                            <Margem>
+                                    <h1>Recém lançados</h1>
+                                    <a href='#'>Ver mais</a>
+                            </Margem>
+                            
+                            <Content>
+                                
+                                {typeof post !== 'undefined' && post.map((value)=>{7
+                                return(
+                                    <Books>
+                                        <a href='#'>
+                                            <Capa src={value.pathImg}/>
+                                            <h3>{value.titulo}</h3>
+                                        </a>
+                                    </Books>
+                                )
+                                })}
+                                
+                                <Books>
+                                    
+                                </Books>
+                                <Books>
+                                    
+                                </Books>
+                                <Books>
+                                    
+                                </Books>
+                                <Books>
+                                    
+                                </Books>
+
+                            </Content>
+
+                        </Separar>
+                        
+                        <Separar>
+                            <Margem>
+                                <h1>Mais curtidos</h1>
+                                <a href='#'>Ver mais</a>
+                            </Margem>
+                        </Separar>
+
+                        <Separar>
+                            <Margem>
+                                <h1>Mais favoritados</h1>
+                                <a href='#'>Ver mais</a>
+                            </Margem>
+                        </Separar> 
+                    </Centraliza>
                     
-                    <Principal>
-                        <button onClick={() => ApagaMeme()}>ApagaMeme</button>
-                        <button onClick={() => TestaMeme()}>TestaMeme</button>
-                        <All>
-                        <h1>Teste</h1>
-                        <h1>Teste</h1>
-                        <h1>Teste</h1>
-                        <h1>Teste</h1>
-                        <h1>Teste</h1>
-                        <h1>Teste</h1>
-                        <h1>Teste</h1>
-                        <h1>Teste</h1>
-                        <h1>Teste</h1>
-                        <h1>Teste</h1>
-                        <h1>Teste</h1>
-                        <h1>Teste</h1>
-                        <h1>Teste</h1>
-                        <h1>Teste</h1>
-                        <h1>Teste</h1>
-                        <h1>Teste</h1>
-                        <h1>Teste</h1>
-                        <h1>Teste</h1>
-                        <h1>Teste</h1>
-                        <h1>Teste</h1>
-                        <h1>Teste</h1>
-                        <h1>Teste</h1>
-                        <h1>Teste</h1>
-                        <h1>Teste</h1>
-                        <h1>Teste</h1>
-                        <h1>Teste</h1>
-                        <h1>Teste</h1>
-                        </All>
-                    </Principal>
-                    
-                
-                <Foter />
+                </Alinhar>  
+   
+                 
+             
            </All >
     )
 }

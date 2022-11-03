@@ -1,5 +1,4 @@
 import Axios  from "axios"
-import { UserPage } from "../pages/UserPage/UserPage"
 import { getToken, Token } from "./auth"
 import { AppContext } from "./Context"
 import { Data } from "./utils"
@@ -14,12 +13,9 @@ export class AxiosUser{
     async axiosGet(nome){
         
         try {
-            return (
-                (Axios.post(`http://localhost:3001/usuario/getProfile`, {
+            return ((Axios.post(`http://localhost:3001/usuario/getProfile`, {
                 nome: nome
-            })
-            )
-            )
+            })))
 
         } 
         catch (error) 
@@ -31,13 +27,20 @@ export class AxiosUser{
     }
     
     async axiosIns(values){
-        Axios.post('http://localhost:3001/usuario/insert',{
-            nome:values.nome,
-            email:values.email,
-            senha:values.senha
-        }).then(()=>{
+        try {
+            Axios.post('http://localhost:3001/usuario/insert',{
+                nome:values.nome,
+                email:values.email,
+                senha:values.senha
+            }).then(()=>{
+
+            })
+        } 
+        catch (error) 
+        {
+            return(error)
+        }
         
-        })
     }
 
     async axiosLogin(email, senha) {
@@ -58,8 +61,10 @@ export class AxiosUser{
                     }
             })
 
-        }catch(err){
-           alert("AAAAAAAAAAAAAA")
+        }
+        catch(error)
+        {
+           return(error)
         }
 
     }
@@ -110,10 +115,21 @@ export class AxiosUser{
     }
 
     async axiosCreateImg(fileImg, config){
-        const formData = new FormData()
-        formData.append('file', fileImg)
-        formData.append('name', fileImg.name)
-        return((Axios.post(`${localhost}/img/insert`, formData, config)))
+
+        try {
+            const formData = new FormData()
+
+            formData.append('file', fileImg)
+
+            formData.append('name', fileImg.name)
+
+            return((Axios.post(`${localhost}/img/insert`, formData, config)))
+        } 
+        catch (error) 
+        {
+            
+        }
+        
     }
 
     async axiosCreateLiv(filePdf, config){
@@ -150,32 +166,31 @@ export class AxiosUser{
     //Deus existe porque o codigo ali embaixo funciona.
 
     async axiosCreatePost(fileImg, filePDF, config, text, gen){
-        
-        const getImgID = await this.axiosCreateImg(fileImg, config)
-        const imgID = getImgID.data[0].imgID
-        console.log(imgID)
-          
-        const getLivID = await this.axiosCreateLiv(filePDF, config)
-        const livID = getLivID.data[0].livID
-        console.log(livID)
-               
-        const getPostID = await this.axiosInsPost(text, livID)
-        const postID = getPostID.data[0].postID
-        console.log(postID)
-
-        this.axiosFKPosImg(postID, imgID)
-
-        this.axiosFKPosGen(postID, gen)
-                
+        try {
+            const getImgID = await this.axiosCreateImg(fileImg, config)
+            const imgID = getImgID.data[0].imgID
             
-       
+            const getLivID = await this.axiosCreateLiv(filePDF, config)
+            const livID = getLivID.data[0].livID
+                
+            const getPostID = await this.axiosInsPost(text, livID)
+            const postID = getPostID.data[0].postID
+
+            this.axiosFKPosImg(postID, imgID)
+
+            this.axiosFKPosGen(postID, gen)
+        } 
+        catch (error) 
+        {
+            return error
+        }
         
-
     }
 
-    async MemesTest(){
-        window.location.replace('/Sobre')
+    async axiosGetPost(){
+        const response = await Axios.get(`${localhost}/post/get`)
+        
+        return response.data
     }
-
     
 }

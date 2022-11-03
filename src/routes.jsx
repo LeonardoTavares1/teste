@@ -7,6 +7,7 @@ import { Cadastro } from './pages/Cadastro/Cadastro.jsx'
 import { UserPage } from './pages/UserPage/UserPage.jsx'
 import { Update } from './pages/update/update.jsx'
 import { Postar } from './pages/Postar/postar.jsx'
+import { Livro } from './pages/livro/livro.jsx'
 
 
 export function Rotas(){
@@ -26,6 +27,8 @@ export function Rotas(){
                         <Route path="/Perfil/Update" element={<Update />}></Route>
 
                         <Route path="/Post/Create" element={<Postar />}></Route>
+
+                        <Route path="/Livro/:titulo" element={<Livro />}></Route>
 
                     </Routes>
                 

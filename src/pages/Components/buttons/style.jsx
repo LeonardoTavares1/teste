@@ -6,10 +6,9 @@ export const Botao = styled.button`
         background-color: #ffffff;
         color: black;
         font-weight: 800;
-        height: 50px;
+        height: 100%;
         border-radius: 5px;
         font-size: 18px;
-        margin-top: 8px;
         border: none;
         font-family: Century Gothic;
 
@@ -25,14 +24,15 @@ export const Botao = styled.button`
 
 export const BotaoD = styled.button`
 
-        width: 25%;
-        background-color: whitesmoke;
+        background-color: transparent;
         color: black;
         font-weight: 800;
-        height: 50px;
+        height: 100%;
+        min-height: 2rem;
+        width: 100%;
+        max-width: 10rem;
         border-radius: 5px;
         font-size: 18px;
-        margin-top: 8px;
         border: none;
         font-family: Century Gothic;
 
