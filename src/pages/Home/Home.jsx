@@ -20,10 +20,10 @@ export function Home(){
     }
 
     useEffect(() => {
-        Axios.get("http://localhost:3001/post/get").then((response)=>{
+        AxiosUser.axiosGetPost().then((response)=>{
             setPost(response.data)
         })
-
+     
     },[])
     
     return(
@@ -42,14 +42,13 @@ export function Home(){
                                 
                                 {typeof post !== 'undefined' && post.map((value)=>{7
                                 return(
-                                    <Books>
-                                        <a href='#'>
+                                    <Books key={value.postID}>
+                                        <a href={`/Livro/${value.titulo}`}>
                                             <Capa src={value.pathImg}/>
                                             <h3>{value.titulo}</h3>
                                         </a>
                                     </Books>
-                                )
-                                })}
+                                )})}
                                 
                                 <Books>
                                     

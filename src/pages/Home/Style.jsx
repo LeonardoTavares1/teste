@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { Primario } from "../../Style/Paleta";
+import { Primario, Secundario } from "../../Style/Paleta";
 
 export const Alinhar = styled.div`
     background-color: transparent;
@@ -18,23 +18,25 @@ export const Centraliza = styled.div`
     background-color: transparent;
     height: 100%;
     width: 100%;
-    max-width: 90%;
+    max-width: 70%;
     display: flex;
     flex-direction: column;
 
 `
 
 export const Separar = styled.div`
-    background-color: #38eded;
+    background-color: ${Secundario};
     width: 100%;
     height: 100%;
-    min-height: 45rem;
+    min-height: 35rem;
     max-height: 100%;
     display: flex;
     flex-direction: column;
-    margin-top: 1rem;
+    margin-top: 2rem;
     border: 1px solid black;
-    box-shadow: 5px 10px 20px teal;
+    box-shadow: 5px 10px 20px #000 ;
+
+    border-radius: 1rem;
 `
 
 export const Margem = styled.div`
@@ -47,6 +49,8 @@ export const Margem = styled.div`
     border-bottom:1px solid black ;
     padding-left: 2rem;
     padding-right: 2rem;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
 
     align-items: center;
     justify-content: space-between;
@@ -75,8 +79,7 @@ export const Books = styled.div`
     width: 100%;
     height: 100%;
     max-height: 85%;
-    max-width: 21rem;
-    min-width: 21rem;
+    max-width: 18rem;
     background-color: white;
     display: flex;
     flex-direction: column;

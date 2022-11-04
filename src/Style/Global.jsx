@@ -1,15 +1,19 @@
 import { createGlobalStyle } from "styled-components";
 
+import fundo from '../assets/fundo.jpeg'
+
 const GlobalStyle = createGlobalStyle`
     *{
         margin: 0;
-        padding: 0;
+        padding: 0; 
         outline: 0;
         box-sizing: border-box;
     }
     html,body{
         height: 100%;
         max-height: auto;
+        background-image: url(${fundo}) ;
+        background-size: contain;
         width: 100%;
         max-width: auto;
         text-rendering: optimizeLegibility;

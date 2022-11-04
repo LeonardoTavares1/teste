@@ -1,4 +1,4 @@
-import { getToken, Token } from "../../../services/auth"
+import { getToken, Logout, Token } from "../../../services/auth"
 import { All } from "../../../Style/all"
 import { Button2 } from "../buttons/buttons"
 import { ProfileAlign, Nome, IMGProfile, Info, Obras, Profile, UserContent, Inf } from "./style"
@@ -68,6 +68,7 @@ export function MyProfile(){
                         
                         <Button2 type='button' onClick={() => new AxiosUser().axiosDel()} texto="Deletar" ></Button2>  
                         <Button2 type='button' onClick={() => update()} texto="Update" ></Button2>
+                        <Button2 type='button' onClick={() => Logout()} texto="Logout" ></Button2>
                        
                    
                 </Info>

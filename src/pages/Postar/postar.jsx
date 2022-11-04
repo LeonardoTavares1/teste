@@ -1,11 +1,12 @@
 import { useState } from "react";
 import { All } from "../../Style/all";
-import { Cadastrar } from "../Cadastro/style";
 import { Button2 } from "../Components/buttons/buttons";
-import { DropFile, Inputs } from "../Components/inputs/inputs";
+import { DropFile, Inputs, Textarea } from "../Components/inputs/inputs";
 import Axios from 'axios'
 import { useEffect } from "react";
 import { AxiosUser } from "../../services/axios";
+import { BookAlign, BookContent, Capa, Delimitar, Faixa, FaixaN, ImagemPerf, ProfileAutor, Secao, Sinopse, TopContent } from "../Components/bookContent/style";
+import { App } from "../Components/Navbar/Navbar";
 
 
 export function Postar(){
@@ -14,6 +15,7 @@ export function Postar(){
     const[pdf, setPdf] = useState(null)
     const[gens, setGens] = useState()
     const[text, setText] = useState()
+    const[textarea, setTextarea] = useState()
     const[gen, setGen] = useState(null)
     
     useEffect(() => {
@@ -27,22 +29,20 @@ export function Postar(){
             ...prevValue,
             [value.target.name]: value.target.value,
         }))
+        
     };
 
-    const Novo = () =>{
-            
-            const config = {
-              headers: {
-                'content-type': 'multipart/form-data',
-              },
-            };
-
-            const EusouumPalio = new AxiosUser().axiosCreatePost(image, pdf, config.headers, text, gen)
-            
-           
-          
+    const Text = event =>{
+        setTextarea(event.target.value)
+        console.log(event.target.value)
     }
-    
+
+    const Novo = () =>{
+
+            const EusouumPalio = new AxiosUser().axiosCreatePost(image, pdf, text, gen)
+
+    }
+    console.log(text)
     const genMud = (value) => {
         setGen(value.target.value)
         
@@ -58,56 +58,101 @@ export function Postar(){
 
     return(
         <All>
-            <Cadastrar>
-            <Inputs 
-                seletor ='' 
-                id='Nome' 
-                name='nome' 
-                type="text" 
-                placeholder="Qual o nome de sua obra?" 
-                onChange={HandleChangeValues}
-            />
+          
+          <App />
 
-            <DropFile 
-                id='imgPost' 
-                name='imgPost' 
-                type="file"
-                accept='image/*' 
-                onChange={GetImg} 
-                texto="Envie a imagem da capa"
-            />
+            <BookAlign>
+                <BookContent>
+                    <FaixaN>
+                        <h1>Qual o nome de sua obra?</h1>
+                        <Delimitar>
+                        <Inputs 
+                            seletor ='' 
+                            id='Nome' 
+                            name='nome' 
+                            type="text" 
+                            placeholder="Resposta" 
+                            onChange={HandleChangeValues}
+                        />
+                        </Delimitar>
+                        <h1>O gênero principal: </h1>
+                        <select onChange={genMud}>
+                            {typeof gens !== "undefined" && gens.map((value)=>{
+                                
+                            
+                                return(
+                                    
+                                    <option key={value.genID} value={value.genID}>{value.nome}</option>
+                                )
+                            })}
+                        </select>
+                    </FaixaN>
+                    <TopContent>
+                        <Capa>
+                            <img src=''></img>
+                            
+                        </Capa>
+                        <ProfileAutor>
+                            
+                        </ProfileAutor>
+                    </TopContent>
 
-            <Inputs 
-                seletor ='' 
-                id='desc' 
-                name='desc' 
-                type="text" 
-                placeholder="Qual a sinopse da sua obra?" 
-                onChange={HandleChangeValues}
-            />
-
-            <DropFile 
-                id='pdfPost' 
-                name='pdfPost' 
-                type="file"
-                accept='application/pdf'  
-                onChange={GetPdf}
-                texto="Envie o arquivo PDF de sua obra"
-            />
-            <select onChange={genMud}>
-                {typeof gens !== "undefined" && gens.map((value)=>{
                     
-                  
-                    return(
-                        
-                        <option value={value.genID}>{value.nome}</option>
-                    )
-                })}
-            </select>
+                    <Faixa>
+                        <Delimitar>
+                            <DropFile 
+                                id='imgPost' 
+                                name='imgPost' 
+                                type="file"
+                                accept='image/*' 
+                                onChange={GetImg} 
+                                texto="Envie a imagem da capa"
+                            />
+                        </Delimitar>
+
+                        <Delimitar>
+                            <DropFile 
+                                id='pdfPost' 
+                                name='pdfPost' 
+                                type="file"
+                                accept='application/pdf'  
+                                onChange={GetPdf}
+                                texto="Envie o arquivo PDF de sua obra" 
+                            />
+                        </Delimitar>
+                        <Delimitar>
+                            <Button2 type="button" texto="Enviar" onClick={() => Novo()}></Button2>
+                        </Delimitar>
+                    </Faixa>
+
+                    <Sinopse>
+                       <textarea
+                            id="desc"
+                            name="desc"
+                            maxLength={500}
+                            cols={5}
+                            rows={10}
+                            onChange={HandleChangeValues}
+                        ></textarea>
+                    </Sinopse>
+
+                    
+
+                </BookContent>
+            </BookAlign>
+
+
             
-            <Button2 type="button" texto="Enviar" onClick={() => Novo()}></Button2>
+
             
-            </Cadastrar>
+
+            
+
+            
+            
+            
+            
+         
         </All>
     )
 }

@@ -3,22 +3,6 @@ import { DateNow } from "../utils/services/date.js"
 
 const con = await poolConnect()
 
-/* Uma class com um CRUD completo na tabela usuar.
-As function async basicamente enviam as operações para o banco.
-O constructor está gigantesco, pois ele serve para que não precisemos passar variaveis fantasmas no controller.
-Se passarmos essas variáveis em branco, a operação não funciona, mesmo que tenhamos utilizado
-apenas uma variável. Esses IFs evitam isso.
-
-o constructor serve para utilizar as variáveis dentro das operações da class, por isso eles são marcados com "This" antes
-do nome da variável, pois esse simbolo demonstra que é uma variável de dentro do documento.
-
-aqui ficam as operações de interação com o banco de dados. O próximo passo é transformar esse crud em Procedures dentro do próprio
-banco, assim criando uma maior segurança. 
-
-(Também precisa encriptar e fazer outras operações do site... Mas isso não será feito por hoje)
-
-*/
-
 export class Usuar{
     constructor(email, senha, nome, nomePlum, statusUser, fkImg, userID){
         if(email == '' || email == null || email == undefined){
@@ -54,15 +38,14 @@ export class Usuar{
         if(fkImg == '' || fkImg == null || fkImg == undefined){
             this.fkImg = 1
         }else{
-            this.fkImg = 1
+            this.fkImg = fkImg
         }
 
         if(userID == '' || userID == null || userID == undefined){
-            this.userID = ''
-        }else{
+            this.userID = '' 
+        }else{ 
             this.userID = userID
         }
-
     }
 
     static async get(){
@@ -80,7 +63,8 @@ export class Usuar{
 
     async getProfile(){
         try {
-            const { recordset } = await con.query(`select nome, insertDate, fkImg, nomePlum, statusUser, userID from usuar 
+            const { recordset } = await con.query(`select nome, us.insertDate, fkImg, nomePlum, statusUser, userID, pathImg from usuar as us 
+            inner join img as i on(us.fkImg = i.imgID)
             where nome = '${this.nome}' and statusUser = 1`)
             return recordset
         } 
@@ -147,4 +131,18 @@ export class Usuar{
             return error
         }
     }
+
+    async getImg(){
+        try {
+            const { recordset } = await con.query(`select pathImg from usuar as us 
+            inner join img as i on(us.fkImg = i.imgID)
+            where userID = ${this.userID} and statusUser = 1`)
+            return recordset
+        } 
+        catch (error) 
+        {
+            return error
+        }
+    }
+
 }

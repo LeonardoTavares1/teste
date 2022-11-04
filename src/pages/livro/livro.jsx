@@ -1,32 +1,33 @@
+import { useEffect, useState } from "react";
+import { useParams } from "react-router-dom";
+import { getToken } from "../../services/auth";
+import { AxiosUser } from "../../services/axios";
 import { All } from "../../Style/all";
-import { Button2 } from "../Components/buttons/buttons";
+import { MyBook } from "../Components/bookContent/bookContent";
 import { App } from "../Components/Navbar/Navbar";
-import { BookAlign, BookContent, Faixa, Sinopse, TopContent } from "./style";
+
 
 
 export function Livro(){
-    return(
-        <All>
-            <App />
-            <BookAlign>
-                <BookContent>
-                    <TopContent>
+    
+    const params = useParams()
+    const [obra, setObra] = useState('')
 
-                    </TopContent>
-                    <Faixa>
-                    
-                        <h1>Genero: Romance</h1>
-                        <h1>Publicado em: Data</h1>
-                        <Button2 texto='Ler'></Button2>
+    useEffect(() => {
+        new AxiosUser().axiosGetPostFilter(params.titulo).then((response) => setObra(response.data[0]))
+    },[])
 
-                    </Faixa>
-                    <Sinopse>
-                        <p>Texto</p>
-                    </Sinopse>
-                </BookContent>
-            </BookAlign>
-        </All>
-    )
+    console.log(obra)
 
+    if(obra.userID == getToken().userID){
+        return(
+            <All>
+                <App />
+                <MyBook 
+                    obra={obra}
+                />
+            </All>
+        )
+    }
 
 }

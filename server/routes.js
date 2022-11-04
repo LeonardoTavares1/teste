@@ -16,6 +16,7 @@ routes.put('/usuario/update/:userID', UsuarController.updateUser)
 routes.delete('/usuario/delete/:userID', UsuarController.deleteUser)
 routes.post('/usuario/login', UsuarController.loginUser)
 routes.post('/usuario/getProfile', UsuarController.getUserProfile)
+routes.post('/usuario/getImg', UsuarController.getUserImg)
 
 routes.post('/img/insert', Multer(multerConfig).single('file'), FilesCtrl.ImgInsert)
 routes.get('/img/get', FilesCtrl.GetImg)
@@ -26,7 +27,10 @@ routes.get('/gen/get', GenCtrl.GetGen)
 routes.post('/liv/insert', Multer(multerConfig).single('file'), FilesCtrl.LivIns)
 
 routes.post('/post/insert', FilesCtrl.PostIns)
+
 routes.get('/post/get', PostCtrl.getHomePost)
+routes.post('/post/getFilter', PostCtrl.getFilterPost)
+routes.put('/post/del/:postID', PostCtrl.deletePost)
 
 routes.post('/FKPosImg/insert', FilesCtrl.posImg)
 

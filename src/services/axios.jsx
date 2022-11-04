@@ -7,6 +7,14 @@ const port = '3001'
 
 const localhost = `http://localhost:${port}`
 
+export function Config() {
+    const config ={
+        headers: {
+            'content-type': 'multipart/form-data',
+        }
+    }
+    return (config.headers)
+  };
 
 export class AxiosUser{
 
@@ -26,15 +34,32 @@ export class AxiosUser{
 
     }
     
-    async axiosIns(values){
+    async axiosIns(values, file){
         try {
-            Axios.post('http://localhost:3001/usuario/insert',{
-                nome:values.nome,
-                email:values.email,
-                senha:values.senha
-            }).then(()=>{
+            if (file == 1){
+                Axios.post('http://localhost:3001/usuario/insert',{
+                    nome:values.nome,
+                    email:values.email,
+                    senha:values.senha,
+                    fkImg: 1
+                }).then(()=>{})
+            } else{
+                const response = await this.axiosCreateImg(file)
+                const imgID = response.data[0].imgID
+                console.log(imgID)
 
-            })
+                Axios.post('http://localhost:3001/usuario/insert',{
+                    nome:values.nome,
+                    email:values.email,
+                    senha:values.senha,
+                    fkImg: imgID
+                }).then(()=>{})
+
+            }
+            
+            
+
+            
         } 
         catch (error) 
         {
@@ -114,7 +139,7 @@ export class AxiosUser{
         }
     }
 
-    async axiosCreateImg(fileImg, config){
+    async axiosCreateImg(fileImg){
 
         try {
             const formData = new FormData()
@@ -123,7 +148,7 @@ export class AxiosUser{
 
             formData.append('name', fileImg.name)
 
-            return((Axios.post(`${localhost}/img/insert`, formData, config)))
+            return((Axios.post(`${localhost}/img/insert`, formData, Config())))
         } 
         catch (error) 
         {
@@ -132,12 +157,12 @@ export class AxiosUser{
         
     }
 
-    async axiosCreateLiv(filePdf, config){
+    async axiosCreateLiv(filePdf){
         const formData = new FormData()
         formData.append('file', filePdf)
         formData.append('name', filePdf.name)
 
-        return((Axios.post(`${localhost}/liv/insert`, formData, config)))
+        return((Axios.post(`${localhost}/liv/insert`, formData, Config())))
     }
 
     async axiosInsPost(text, livID){
@@ -165,12 +190,12 @@ export class AxiosUser{
 
     //Deus existe porque o codigo ali embaixo funciona.
 
-    async axiosCreatePost(fileImg, filePDF, config, text, gen){
+    async axiosCreatePost(fileImg, filePDF, text, gen){
         try {
-            const getImgID = await this.axiosCreateImg(fileImg, config)
+            const getImgID = await this.axiosCreateImg(fileImg)
             const imgID = getImgID.data[0].imgID
             
-            const getLivID = await this.axiosCreateLiv(filePDF, config)
+            const getLivID = await this.axiosCreateLiv(filePDF)
             const livID = getLivID.data[0].livID
                 
             const getPostID = await this.axiosInsPost(text, livID)
@@ -187,10 +212,45 @@ export class AxiosUser{
         
     }
 
-    async axiosGetPost(){
-        const response = await Axios.get(`${localhost}/post/get`)
+    static async axiosGetPost(){
+         
         
-        return response.data
+        return(Axios.get(`${localhost}/post/get`))
     }
     
+    async axiosGetPostFilter(titulo){
+        try {
+            return((Axios.post(`${localhost}/post/getFilter`, {nome: titulo})))
+        } 
+        catch (error) 
+        {
+            return error
+        }
+        
+    }
+
+    async axiosGetImgUser(userID){
+        try {
+            return ((Axios.post(`${localhost}/usuario/getImg`, {
+                userID: userID
+            })))    
+        } 
+        catch (error) 
+        {
+            return error
+        }
+    }
+
+    async axiosDelPost(postID){
+        try {
+            Axios.put(`${localhost}/post/del/${postID}`).then(()=>{
+                window.location.replace('/')
+            })
+        } 
+        catch (error) 
+        {
+            
+        }
+    }
+
 }

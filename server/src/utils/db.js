@@ -10,7 +10,7 @@ export const db = {
     port: 1433,
     user:'sa',
     password:'0192',
-    database:'LiberT',
+    database:'LiberT', 
     options:{
         enableArithAbort: true,
         encrypt: false, 

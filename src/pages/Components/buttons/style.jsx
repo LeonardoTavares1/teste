@@ -2,13 +2,13 @@ import styled from "styled-components";
 
 export const Botao = styled.button`
 
-        width: 85%;
+        width: 100%;
         background-color: #ffffff;
         color: black;
         font-weight: 800;
         height: 100%;
         border-radius: 5px;
-        font-size: 18px;
+        font-size: 1.8rem;
         border: none;
         font-family: Century Gothic;
 
@@ -28,9 +28,7 @@ export const BotaoD = styled.button`
         color: black;
         font-weight: 800;
         height: 100%;
-        min-height: 2rem;
         width: 100%;
-        max-width: 10rem;
         border-radius: 5px;
         font-size: 18px;
         border: none;

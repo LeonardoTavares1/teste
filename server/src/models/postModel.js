@@ -77,6 +77,39 @@ export class PostModel {
         }
     }
 
+    async GetFilter(){
+        try {
+            const { recordset } = await con.query(`select titulo, texto, postID, curtir, us.nome as userName, g.nome as genNome, pt.insertDate, pathImg, pathLiv, imgID, livID, userID from post as pt 
+                inner join usuar as us on(pt.fkUser = us.userID)
+                inner join posImg as pm on(pt.postID = pm.fkPost)
+                inner join img as m on(pm.fkImg = m.imgID)
+                inner join liv as l on(pt.fkLiv = l.livID)
+                inner join genPos as gp on(pt.postID = gp.fkPos)
+                inner join gen as g on (gp.fkGen = g.genID)
+                where statusUser = 1 and statusPost = 1 and statusLiv = 1 and statusImg = 1 and titulo = '${this.nome}'`) 
+                return recordset 
+            
+        } 
+        catch (error) 
+        {
+            return error
+        }
+    }
+
+    async deletePost(){
+        try {
+            const { rowsAffected } = await con.query(`update post set statusPost = 0 where postID = ${this.postID}`)
+            
+            return rowsAffected
+       
+        } 
+        catch (error) 
+        {
+            console.log('error model ' + error)
+            return (error)
+        }
+    }
+
 }
 
 /*select * from post as pt

@@ -21,8 +21,8 @@ export class UsuarController{
 
     static async getUserProfile(req, res){
         try {
-                const { email, senha, nome, nomePlum, statusUser, insertDate, modDate,fkImg } = req.body
-                const usuario = await new Usuar(email, senha, nome, nomePlum, statusUser, insertDate, modDate,fkImg).getProfile()
+                const { email, senha, nome, nomePlum, modDate, fkImg} = req.body
+                const usuario = await new Usuar(email, senha, nome, nomePlum, modDate,fkImg).getProfile()
                 return res.status(200).json(usuario)
         } 
         catch (error) 
@@ -34,8 +34,8 @@ export class UsuarController{
 
     static async insertUser(req, res){
         try {
-                const { email, senha, nome, nomePlum, statusUser, insertDate, modDate,fkImg } = req.body
-                const newUser = await new Usuar( email, senha, nome, nomePlum, statusUser, insertDate, modDate,fkImg).insert()
+                const { email, senha, nome, nomePlum, statusUser,fkImg } = req.body
+                const newUser = await new Usuar( email, senha, nome, nomePlum, statusUser,fkImg).insert()
                 return res.status(200).json(newUser)
         } 
         catch (error) 
@@ -48,8 +48,8 @@ export class UsuarController{
     static async updateUser(req, res){
         try {
                 const { userID } = req.params
-                const { email, senha, nome, nomePlum, statusUser, insertDate, modDate,fkImg } = req.body
-                const alterUser = await new Usuar(email, senha, nome, nomePlum, statusUser, insertDate, modDate,fkImg, userID).update()
+                const { email, senha, nome, nomePlum, statusUser, fkImg } = req.body
+                const alterUser = await new Usuar(email, senha, nome, nomePlum, statusUser,fkImg, userID).update()
                 return res.status(200).json(alterUser)
         } 
         catch (error) 
@@ -62,8 +62,8 @@ export class UsuarController{
     static async deleteUser(req, res){
         try {
                 const { userID } = req.params
-                const { email, senha, nome, nomePlum, statusUser, insertDate, modDate,fkImg } = req.body
-                const delUser = await new Usuar(email, senha, nome, nomePlum, statusUser, insertDate, modDate,fkImg, userID).delete()
+                const { email, senha, nome, nomePlum, statusUser,fkImg } = req.body
+                const delUser = await new Usuar(email, senha, nome, nomePlum, statusUser,fkImg, userID).delete()
                 return res.status(200).json(delUser)
         } 
         catch (error) 
@@ -75,13 +75,19 @@ export class UsuarController{
 
     static async loginUser(req, res){
         try {
-            const { email, senha, nome, nomePlum, statusUser, insertDate, modDate,fkImg } = req.body
-            const loginUser = await new Usuar(email, senha, nome, nomePlum, statusUser, insertDate, modDate,fkImg).login()
+            const { email, senha, nome, nomePlum, statusUser,fkImg } = req.body
+            const loginUser = await new Usuar(email, senha, nome, nomePlum, statusUser,fkImg).login()
             return res.status(200).json(loginUser)
         } 
         catch (error) {
             console.log('login ' + error)
         }
+    }
+
+    static async getUserImg(req, res){
+        const { email, senha, nome, nomePlum, modDate, fkImg, userID} = req.body
+        const usuario = await new Usuar(email, senha, nome, nomePlum, modDate,fkImg, userID).getImg()
+        return res.status(200).json(usuario)
     }
 
 }

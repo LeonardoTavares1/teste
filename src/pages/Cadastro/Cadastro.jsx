@@ -1,14 +1,17 @@
 import { useState } from 'react'
 import { All } from '../../Style/all';
 import { Button } from '../Components/buttons/buttons';
-import { Inputs } from '../Components/inputs/inputs';
-import { Cadastrar } from './style';
+import { DropFile, Inputs } from '../Components/inputs/inputs';
+import { Adjust, AdjustImg, CadAlign, Cadastrar } from './style';
 import { AxiosUser } from '../../services/axios';
+import noProfile from '../../assets/noProfile.jpg'
 
 export function Cadastro(){
 
     const[values, setValues] = useState();
-    
+    const[image, setImage] = useState(1)
+    const[handleImg, setHandleImg] = useState(noProfile)
+
     const HandleChangeValues = (value) =>{
         setValues(prevValue =>({
             ...prevValue,
@@ -16,25 +19,81 @@ export function Cadastro(){
         }))
     };
 
+    const GetImg = (value) =>{
+        setImage(value.target.files[0]) 
+        setHandleImg(URL.createObjectURL(value.target.files[0]))
+    }
+
     return(
         <>
 
             <All>
-                <Cadastrar>
-                    <h1>Crie sua conta</h1>
+                <CadAlign>
+                    <Cadastrar>
+                        <h1>Crie sua conta</h1>
 
+                        <AdjustImg>
+                            <img src={handleImg}/>
+                        </AdjustImg>
 
-                    <Inputs seletor={1} id="nome" name="nome" type="email" placeholder="Nome completo" onChange={HandleChangeValues}/>
+                        <Adjust>
+                            <DropFile 
+                                id='imagem' 
+                                name='imagem'  
+                                type='file' 
+                                accept='image/*' 
+                                texto='Escolha sua imagem de Perfil aqui' 
+                                onChange={GetImg}
+                            />
+                        </Adjust>
 
-                    <Inputs seletor={2} id="email" name="email" type="email" placeholder="Seu email" onChange={HandleChangeValues} />
+                        <Adjust>
+                            <Inputs 
+                                seletor={1} 
+                                id="nome" 
+                                name="nome" 
+                                type="email" 
+                                placeholder="Nome completo" 
+                                onChange={HandleChangeValues}
+                            />
+                        </Adjust>
 
-                    <Inputs seletor={3} id="senha" name="senha" type="password" placeholder="Senha" onChange={HandleChangeValues}/>
+                        <Adjust>
+                            <Inputs 
+                                seletor={2} 
+                                id="email" 
+                                name="email" 
+                                type="email" 
+                                placeholder="Seu email" 
+                                onChange={HandleChangeValues} 
+                            />
+                        </Adjust>
+                        <Adjust>
+                            <Inputs 
+                                seletor={3} 
+                                id="senha" 
+                                name="senha" 
+                                type="password" 
+                                placeholder="Senha" 
+                                onChange={HandleChangeValues}
+                            />
+                        </Adjust>
+                       
+                        <Adjust>
+                            <Button 
+                                type="submit" 
+                                onClick={() => new AxiosUser().axiosIns(values, image)} 
+                                texto="Cadastrar"
+                            />
+                        </Adjust>
+                        
 
-                    <Button type="submit" onClick={() => new AxiosUser().axiosIns(values)} texto="Cadastrar"/>
+                        <a href="/">
+                            <h3>Voltar para a página Home</h3>
+                        </a>
 
-                    <a type="submit" href="/">Home</a>
-
-                </Cadastrar>
+                    </Cadastrar>
+                </CadAlign>
             </All>
         </>
     )

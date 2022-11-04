@@ -7,3 +7,8 @@ export function getToken (){
 
     return user
 }
+
+export function Logout(){
+    let recup = localStorage.removeItem(Token)
+    window.location.replace('/')
+}
