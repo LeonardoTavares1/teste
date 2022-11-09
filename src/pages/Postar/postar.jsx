@@ -1,21 +1,22 @@
 import { useState } from "react";
 import { All } from "../../Style/all";
 import { Button2 } from "../Components/buttons/buttons";
-import { DropFile, Inputs, Textarea } from "../Components/inputs/inputs";
+import { DropFile, Inputs } from "../Components/inputs/inputs";
 import Axios from 'axios'
 import { useEffect } from "react";
 import { AxiosUser } from "../../services/axios";
 import { BookAlign, BookContent, Capa, Delimitar, Faixa, FaixaN, ImagemPerf, ProfileAutor, Secao, Sinopse, TopContent } from "../Components/bookContent/style";
 import { App } from "../Components/Navbar/Navbar";
+import { SinopseArea } from "./style";
 
 
 export function Postar(){
 
     const [image, setImage] = useState(null)
+    const [holdImage, setHoldImage] = useState(null)
     const[pdf, setPdf] = useState(null)
     const[gens, setGens] = useState()
     const[text, setText] = useState()
-    const[textarea, setTextarea] = useState()
     const[gen, setGen] = useState(null)
     
     useEffect(() => {
@@ -32,10 +33,6 @@ export function Postar(){
         
     };
 
-    const Text = event =>{
-        setTextarea(event.target.value)
-        console.log(event.target.value)
-    }
 
     const Novo = () =>{
 
@@ -43,6 +40,7 @@ export function Postar(){
 
     }
     console.log(text)
+
     const genMud = (value) => {
         setGen(value.target.value)
         
@@ -50,6 +48,7 @@ export function Postar(){
 
     const GetImg = (value) =>{
         setImage(value.target.files[0]) 
+        setHoldImage(URL.createObjectURL(value.target.files[0]))
     }
 
     const GetPdf = (value) =>{
@@ -89,7 +88,7 @@ export function Postar(){
                     </FaixaN>
                     <TopContent>
                         <Capa>
-                            <img src=''></img>
+                            <img src={holdImage}></img>
                             
                         </Capa>
                         <ProfileAutor>
@@ -126,17 +125,19 @@ export function Postar(){
                     </Faixa>
 
                     <Sinopse>
-                       <textarea
-                            id="desc"
-                            name="desc"
-                            maxLength={500}
-                            cols={5}
-                            rows={10}
-                            onChange={HandleChangeValues}
-                        ></textarea>
+                        <SinopseArea>
+                            <textarea
+                                id="desc"
+                                name="desc"
+                                maxLength={7000}
+                                cols={5}
+                                rows={10}
+                                onChange={HandleChangeValues}
+                            ></textarea>
+                        </SinopseArea>
+                        
                     </Sinopse>
 
-                    
 
                 </BookContent>
             </BookAlign>

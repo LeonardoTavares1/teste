@@ -1,5 +1,5 @@
 import sql from 'mssql'
-import { db } from './src/utils/DB.js'
+import { db } from './src/utils/dbInfo.js'
 
 //a conexão em si, para utilizar dentro das operações do Model.
 

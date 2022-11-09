@@ -34,6 +34,7 @@ export const TopContent = styled.div`
     background-color: ${Secundario};
     width: 100%;
     height: 100%;
+    min-height: 30rem;
     max-height: 30rem;
     display: flex;
     align-items: center;
@@ -146,9 +147,11 @@ export const Sinopse = styled.div`
     min-height: 20%;
     width: 80%;
     max-height: 100%;
+    max-height: 200rem;
     display: flex;
     justify-content: center;
     padding-top: 3rem;
+    margin-bottom: 100%;
     p{
         text-align: justify;
         font-size: 2rem;

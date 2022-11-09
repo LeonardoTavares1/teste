@@ -1,5 +1,5 @@
 import sql from 'mssql'
-import { db } from './src/utils/DB.js'
+import { db } from './src/utils/dbInfo.js'
 
 //Aqui testa a conexão, antes de subir o servidor.
 
@@ -17,7 +17,7 @@ export async function testCon(){
         if (pool._connected == true){
             console.log('Conexão funcionando')
             pool.close()
-            return true 
+            return true  
         }else{
             console.log('erro na conexão ' + pool)
             pool.close()
