@@ -15,33 +15,39 @@ export function UserPage(){
 
     useEffect(() => {
         new AxiosUser().axiosGet(params.nome).then((response) => setUser(response.data[0]))
-    },[])
-    
+    },[new AxiosUser().axiosGet(params.nome).then((response) => setUser(response.data[0]))])
     
     
     if(user !== undefined){ 
-        if(user.nome == getToken().nome){ 
-            return(
+        try {
+            if(user.nome == getToken().nome){ 
+                return(
                         <All>
                             <App />
-                                <MyProfile /> 
+                            
+                            <MyProfile /> 
                             <Foter />
                         </All>
-            )
-        }else{
+                )
+            }
+        } 
+        catch (error) 
+        {
             return(    
+                <All>
+                    <App />
                     <All>
-                        <App />
-    
-                        <All>
-                            <OtherUser user={user}/>
-                        </All>
-    
-                        <Foter />
+                        <OtherUser user={user}/>
                     </All>
-    
+
+                    <Foter />
+                </All>
+
             )
+ 
         }
+      
+           
     }else{
         return(    
                 <All>

@@ -13,15 +13,27 @@ pdfjs.GlobalWorkerOptions.workerSrc = `//cdnjs.cloudflare.com/ajax/libs/pdf.js/$
 export function OtherBook(obra){
 
     const itens = obra.obra
+   
+    const [imgUser, setImgUser] = useState()
 
-    const [imgUser, setImgUser] = useState('')
+    
+
+    const [sinopseContent, setSinopseContent] = useState(undefined)
+    console.log(itens.texto)
 
     useEffect(() => {
         new AxiosUser().axiosGetImgUser(itens.userID).then((response) => setImgUser(response.data[0].pathImg))
-    },[])
+
+    },[new AxiosUser().axiosGetImgUser(itens.userID).then((response) => setImgUser(response.data[0].pathImg))]) 
+
+    
+
+    const Ler = () =>{
+        
+    }
 
     return(
-    <BookAlign>
+        <BookAlign>
                 <BookContent>
                     <FaixaN>
                         <h1>Nome da obra: {itens.titulo}</h1>
@@ -45,25 +57,27 @@ export function OtherBook(obra){
 
                     
                     <Faixa>
+                        <Delimitar>
+                            <Button2 texto='Ler' onClick={() => Ler()}></Button2>
+                        </Delimitar>
                         
-                        
-                        <Delimitar>
-                            <Button2 texto='Ler'></Button2>
-                        </Delimitar>
-                        <Delimitar>
-                            <Button2 texto="Curtir"></Button2>
-                        </Delimitar>
-                        <Delimitar>
-                            <Button2 texto="Favoritar"></Button2>
-                        </Delimitar>
                         <Delimitar>
                             <Button2 texto="Comentar"></Button2>
                         </Delimitar>
-                       
+                        <Delimitar>
+                            <Button2 texto="Curtir" onClick={() => console.log('Vazio')}></Button2>
+                        </Delimitar>
+                        <Delimitar>
+                            <Button2 texto="Favoritar" ></Button2>
+                        </Delimitar>
                     </Faixa>
-                    <Sinopse>
-                        <p>{itens.texto}</p>
-                    </Sinopse>
+
+                    {sinopseContent != undefined && <Sinopse id="SinopseCon">
+                    <p>{itens.texto}</p>
+    </Sinopse>
+    }
+                    
+
                 </BookContent>
             </BookAlign>
     )
@@ -107,7 +121,7 @@ export function MyBook(obra){
                     
                     <Faixa>
                         <Delimitar>
-                            <Button2 texto='Ler'></Button2>
+                            <Button2 texto='Ler' ></Button2>
                         </Delimitar>
                         
                         <Delimitar>

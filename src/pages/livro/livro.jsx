@@ -3,7 +3,7 @@ import { useParams } from "react-router-dom";
 import { getToken } from "../../services/auth";
 import { AxiosUser } from "../../services/axios";
 import { All } from "../../Style/all";
-import { MyBook } from "../Components/bookContent/bookContent";
+import { MyBook, OtherBook } from "../Components/bookContent/bookContent";
 import { App } from "../Components/Navbar/Navbar";
 
 
@@ -18,16 +18,29 @@ export function Livro(){
     },[])
 
     console.log(obra)
-
-    if(obra.userID == getToken().userID){
+    try {
+        if(obra.userID == getToken().userID){
+            return(
+                <All>
+                    <App />
+                    <MyBook 
+                        obra={obra}
+                    />
+                </All>
+            )
+        }
+    } 
+    catch (error) 
+    {
         return(
             <All>
                 <App />
-                <MyBook 
+                <OtherBook 
                     obra={obra}
                 />
             </All>
         )
     }
+
 
 }

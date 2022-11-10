@@ -40,10 +40,12 @@ export function App() {
         return (
             <Navbar>
                 <ProfileContainer>
-                    <Image src={Logo} />
-                    <Title>
-                        LIBER
-                    </Title> 
+                        <a href='/'>
+                            <Image src={Logo} />
+                        </a>
+                        <Title>
+                            <a href='/'>LIBER</a>
+                        </Title> 
                 </ProfileContainer>
                 <Links>
                     <Link>
