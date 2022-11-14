@@ -87,24 +87,3 @@ export const Input = styled.input`
     
 
 `
-
-
-export const Div = styled.div`
-
-    background-color: red;
-    color: white;
-    padding: 5px 8px;
-    border: 1px solid red;
-    border-radius: 5px;
-    cursor: pointer;
-    font-size: 15px;
-    transition: all .3s ease;
-
-    &:hover{
-        background-color: white;
-        color: red;
-
-    }
-
-
-`
