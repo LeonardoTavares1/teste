@@ -11,7 +11,7 @@ export const Botao = styled.button`
         font-size: 1.8rem;
         border: none;
         font-family: Century Gothic;
-
+        transition: all .3s ease;
         outline-width: 0;
 
         &:hover{

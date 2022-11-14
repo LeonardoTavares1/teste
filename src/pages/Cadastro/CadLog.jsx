@@ -42,7 +42,7 @@ export function Cadastro(){
                                 name='imagem'  
                                 type='file' 
                                 accept='image/*' 
-                                texto='Escolha sua imagem de Perfil aqui' 
+                                texto='Adicionar imagem de Perfil' 
                                 onChange={GetImg}
                             />
                         </Adjust>

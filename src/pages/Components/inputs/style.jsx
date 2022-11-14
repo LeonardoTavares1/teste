@@ -41,22 +41,18 @@ export const InputDivD = styled.div`
 
 
 export const InputLabel = styled.label`
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    color: gray;
-    background-color: transparent;
-    border-radius: 5px;
-    padding: 0.5rem;
-    width: 100%;
-    max-width: 100%;
-    height: 100%;
+    background-color: white;
     color: black;
-    font-size: 1.7rem;
-    font-weight: 550;
-    
+    padding: 5px 8px;
+    border: 1px solid none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: all .3s ease;
+
     &:hover{
-        color: ${Terciaria};
+        background-color: #F05365;
+        color: #EFF2F5;
+
     }
     
     
@@ -93,3 +89,22 @@ export const Input = styled.input`
 `
 
 
+export const Div = styled.div`
+
+    background-color: red;
+    color: white;
+    padding: 5px 8px;
+    border: 1px solid red;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 15px;
+    transition: all .3s ease;
+
+    &:hover{
+        background-color: white;
+        color: red;
+
+    }
+
+
+`
