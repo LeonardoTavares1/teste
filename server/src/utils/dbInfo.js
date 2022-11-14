@@ -1,8 +1,8 @@
 export const db = {
-    server: '10.68.102.4',
+    server: 'DESKTOP-7C99J2K',
     port: 1433,
     user:'sa',
-    password:'Admin2018@',
+    password:'0192',
     database:'LiberT', 
     options:{
         enableArithAbort: true,
@@ -12,7 +12,7 @@ export const db = {
     connectionTimeout: 1500, 
     pool:{
         max:10, 
-        min:0, 
+        min:0,  
         idleTimeoutMillis:30000
     },
-} 
+}   

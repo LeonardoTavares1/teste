@@ -11,7 +11,7 @@ import path from 'path'
 dotenv.config()
 
 const port = process.env.PORT = 3001
-const app = express()
+const app = express() 
 
 
 app.use(cors())

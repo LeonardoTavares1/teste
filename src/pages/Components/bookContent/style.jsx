@@ -180,3 +180,64 @@ export const Secao = styled.section`
     justify-content: center;
     align-items: center;
 `
+
+export const ComentSection = styled.div`
+    width: 100%;
+    height: 100%;
+    min-height: 25rem;
+    background-color: ${Secundario};
+    display: flex;
+    padding-top: 1rem;
+    flex-direction: column;
+    align-items: center;
+`
+
+export const Coment = styled.div`
+    width: 80%;
+    height: 100%;
+    background-color: white;
+    border: 1px solid gray;
+    max-height: 20rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    a{
+        width: 100%;
+        height: 100%;
+        max-width: 10rem;
+        max-height: 10rem;
+    }
+`
+export const NameComent = styled.h1`
+    width: 100%;
+    height: 100%;
+    max-height: 3rem;
+    display: flex;
+    align-items: center;
+    background-color: white;
+    border-bottom: 1px solid black;
+
+`
+
+export const ComentAlign = styled.div`
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+`
+
+export const ComentProfile = styled.img`
+    width: 100%;
+    height: 100%;
+    border-radius: 100%;
+`
+
+export const ComentText = styled.p`
+    font-size: 1rem;
+    text-justify: inherit;
+    background-color: white;
+    width: 100%;
+    max-width: 70%;
+    height: 100%;
+`

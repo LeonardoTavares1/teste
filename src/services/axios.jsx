@@ -16,6 +16,37 @@ export function Config() {
     return (config.headers)
   };
 
+const Api = Axios.create({
+    baseURL: `${localhost}`
+})
+
+export class AxiosCrud{
+    static async Get(url, info){
+        if(info){
+            const response = await Api.post(url, info)
+            return response
+        } else{
+            const response = await Api.get(url)
+            return response
+        }
+    }
+
+    static async Insert(url,  info, config){
+        try {
+            if(config){
+                const res = await Api.post(url, info, config)
+            }else{
+                const res = await Api.post(url, info, config)
+            }
+        } 
+        catch (error) 
+        {
+            console.log(error)    
+        }
+    }
+}
+
+
 export class AxiosUser{
 
     async axiosGet(nome){
@@ -250,6 +281,17 @@ export class AxiosUser{
         catch (error) 
         {
             
+        }
+    }
+
+    static async axiosCreateCom(text){
+        try {
+            const res = await AxiosCrud.Insert('/coment/insert', text)
+            return res
+        } 
+        catch (error) 
+        {
+            console.log(error)
         }
     }
 

@@ -5,6 +5,7 @@ import { multerConfig } from './src/utils/multer.js'
 import { FilesCtrl } from './src/controllers/filesCtrl.js'
 import { GenCtrl } from './src/controllers/genCtrl.js'
 import { PostCtrl } from './src/controllers/postCtrl.js'
+import { ComentController } from './src/controllers/comCtrl.js'
 
 //as rotas que enviam dados para o controller.
 
@@ -35,5 +36,8 @@ routes.put('/post/del/:postID', PostCtrl.deletePost)
 routes.post('/FKPosImg/insert', FilesCtrl.posImg)
 
 routes.post('/FKPosGen/insert', FilesCtrl.posGen)
+
+routes.get('/coment/get', ComentController.getCom)
+routes.post('/coment/insert',  ComentController.insertCom)
 
 export { routes } 

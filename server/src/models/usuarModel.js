@@ -57,7 +57,7 @@ export class Usuar{
         catch (error)
         {
             console.log('error model ' + error)
-            return error(error)
+            return error(error) 
         }
     }
 

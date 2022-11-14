@@ -40,15 +40,16 @@ export function Home(){
                             
                             <Content>
                                 
-                                {typeof post !== 'undefined' && post.map((value)=>{7
-                                return(
-                                    <Books key={value.postID}>
-                                        <a href={`/Livro/${value.titulo}`}>
-                                            <Capa src={value.pathImg}/>
-                                            <h3>{value.titulo}</h3>
-                                        </a>
-                                    </Books>
-                                )})}
+                                {typeof post !== 'undefined' && post.map((value)=>{
+                                    return(
+                                        <Books key={value.postID}>
+                                            <a href={`/Livro/${value.titulo}`}>
+                                                <Capa src={value.pathImg}/>
+                                                <h3>{value.titulo}</h3>
+                                            </a>
+                                        </Books>
+                                        )}
+                                )}
                                 
                                 <Books>
                                     

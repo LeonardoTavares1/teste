@@ -23,7 +23,7 @@ export function Mes(){
 
 export function DateNow(){
 
-    const data = `${Dia()}/${Mes()}/${current.getFullYear()}`
+    const data = `${Dia()}/${Mes()}/${current.getFullYear()}` 
 
     return data
 }
