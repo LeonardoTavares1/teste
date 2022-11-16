@@ -1,83 +1,117 @@
 import { getToken, Logout, Token } from "../../../services/auth"
 import { All } from "../../../Style/all"
 import { Button2 } from "../buttons/buttons"
-import { ProfileAlign, Nome, IMGProfile, Info, Obras, Profile, UserContent, Inf } from "./style"
+import { ProfileAlign, Nome, IMGProfile, Info, Obras, Profile, Inf, UserSobreContent, ContentUser} from "./style"
 import { AxiosUser } from "../../../services/axios"
 import { Data } from "../../../services/utils"
+import { BookAlign, Capa, Delimitar } from "../bookContent/style"
+import { SobreContent } from "../../Sobre/Style"
+import { Books, Content } from "../../Home/Style"
 
-export function OtherUser(user){
-    const usuario = user.user
-    
-
-    return(
-        
-        <UserContent>
-            <All>
-                <Profile>
-                    
-                    <ProfileAlign>
-                        <IMGProfile>
-                            <h1>Em teoria aqui vai uma imagem.</h1>
-                        </IMGProfile>
-
-                        <Nome>{usuario.nome}</Nome>
-                   </ProfileAlign>
-                </Profile>
-
-                <Info>
-                    <h1>Conta criada em {usuario.insertDate}</h1>
-                </Info>
-
-            
-                <Obras>
-                        <h1>aaaaaaaaaa</h1>
-                </Obras>
-                
-            </All>
-        </UserContent>
-    )
-}
-
-export function MyProfile(){
-    console.log(getToken())
-
-    console.log(Data())
+export function OtherUser({user, liv}){
+    const imgU = user.pathImg
 
     const update = () =>{
         window.location.replace('Perfil/../Update')
     }
 
     return(
-        <UserContent>
-            <All>
+        <BookAlign>
+            <UserSobreContent>
                 <Profile>
                     
                     <ProfileAlign>
-                        <IMGProfile>
-                            <h1>Em teoria aqui vai uma imagem.</h1>
-                        </IMGProfile>
+                        
+                        <img src={imgU}></img>
+                     
 
                         <Nome>{getToken().nome}</Nome>
                    </ProfileAlign>
                 </Profile>
 
                 <Info>
-                    <h1>Conta criada em {getToken().insertDate}</h1>
+                        <Delimitar>
+                            <h1>Conta criada em: {getToken().insertDate}</h1>
+                        </Delimitar>           
+                </Info>
+
+                    <ContentUser>
+                        {typeof liv !== 'undefined' && liv.map((value)=>{
+                                    return(
+                                        <Books key={value.postID}>
+                                            <a href={`/Livro/${value.titulo}`}>
+                                                <Capa src={value.pathImg}/>
+                                                <h3>{value.titulo}</h3>
+                                            </a>
+                                        </Books>
+                                        )}
+                                )}
+                    </ContentUser>
+                
+            </UserSobreContent>
+        </BookAlign>
+    )
+}
+
+export function MyProfile({user, liv}){
+
+    const imgU = user.pathImg
+
+    const update = () =>{
+        window.location.replace('Perfil/../Update')
+    }
+
+    return(
+        <BookAlign>
+            <UserSobreContent>
+                <Profile>
+                    
+                    <ProfileAlign>
+                        
+                        <img src={imgU}></img>
+                     
+
+                        <Nome>{getToken().nome}</Nome>
+                   </ProfileAlign>
+                </Profile>
+
+                <Info>
+                        <Delimitar>
+                            <h1>Conta criada em: {getToken().insertDate}</h1>
+                        </Delimitar>
+
+                        
 
                     
+                        <Delimitar>
+                            <Button2 type='button' onClick={() => new AxiosUser().axiosDel()} texto="Deletar" ></Button2>  
+                        </Delimitar>
+
+                        <Delimitar>
+                            <Button2 type='button' onClick={() => update()} texto="Update" ></Button2>
+                        </Delimitar>
+                        <Delimitar>
+                            <Button2 type='button' onClick={() => Logout()} texto="Logout" ></Button2>
+                        </Delimitar>
                         
-                        <Button2 type='button' onClick={() => new AxiosUser().axiosDel()} texto="Deletar" ></Button2>  
-                        <Button2 type='button' onClick={() => update()} texto="Update" ></Button2>
-                        <Button2 type='button' onClick={() => Logout()} texto="Logout" ></Button2>
                        
                    
                 </Info>
 
-                    <Obras>
-                        <h1>aaaaaaaaaa</h1>
-                    </Obras>
+                    <ContentUser>
+                        {typeof liv !== 'undefined' && liv.map((value)=>{
+                                    return(
+                                        <Books key={value.postID}>
+                                            <a href={`/Livro/${value.titulo}`}>
+                                                <Capa src={value.pathImg}/>
+                                                <h3>{value.titulo}</h3>
+                                            </a>
+                                        </Books>
+                                        )}
+                                )}
+                    </ContentUser>
                 
-            </All>
-        </UserContent>
+            </UserSobreContent>
+        </BookAlign>
     )
 }

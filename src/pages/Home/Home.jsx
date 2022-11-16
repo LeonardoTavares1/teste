@@ -50,37 +50,11 @@ export function Home(){
                                         </Books>
                                         )}
                                 )}
-                                
-                                <Books>
-                                    
-                                </Books>
-                                <Books>
-                                    
-                                </Books>
-                                <Books>
-                                    
-                                </Books>
-                                <Books>
-                                    
-                                </Books>
 
                             </Content>
 
                         </Separar>
                         
-                        <Separar>
-                            <Margem>
-                                <h1>Mais curtidos</h1>
-                                <a href='#'>Ver mais</a>
-                            </Margem>
-                        </Separar>
-
-                        <Separar>
-                            <Margem>
-                                <h1>Mais favoritados</h1>
-                                <a href='#'>Ver mais</a>
-                            </Margem>
-                        </Separar> 
                     </Centraliza>
                     
                 </Alinhar>  

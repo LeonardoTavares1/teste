@@ -12,10 +12,15 @@ export function UserPage(){
 
     const params = useParams() 
     const [user, setUser] = useState('')
+    const [livs, setLivs] = useState('')
 
     useEffect(() => {
-        new AxiosUser().axiosGet(params.nome).then((response) => setUser(response.data[0]))
-    },[new AxiosUser().axiosGet(params.nome).then((response) => setUser(response.data[0]))])
+        new AxiosUser().axiosGet(params.nome).then((response)=>{
+            console.log(response)
+            setUser(response.user)
+            setLivs(response.liv)
+        })
+    },[])
     
     
     if(user !== undefined){ 
@@ -24,9 +29,8 @@ export function UserPage(){
                 return(
                         <All>
                             <App />
-                            
-                            <MyProfile /> 
-                            <Foter />
+                            <MyProfile user={user} liv={livs} /> 
+                  
                         </All>
                 )
             }
@@ -36,11 +40,8 @@ export function UserPage(){
             return(    
                 <All>
                     <App />
-                    <All>
-                        <OtherUser user={user}/>
-                    </All>
-
-                    <Foter />
+                        <OtherUser user={user} liv={livs} />  
+             
                 </All>
 
             )

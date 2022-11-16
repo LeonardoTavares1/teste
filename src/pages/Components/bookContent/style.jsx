@@ -43,7 +43,7 @@ export const TopContent = styled.div`
 
 `
 
-export const Capa = styled.div`
+export const Capa = styled.img`
     width: 100%;
     height: 100%;
     max-height: 85%;
@@ -183,7 +183,6 @@ export const Secao = styled.section`
 
 export const ComentSection = styled.div`
     width: 100%;
-    height: 100%;
     min-height: 25rem;
     background-color: ${Secundario};
     display: flex;
@@ -234,7 +233,7 @@ export const ComentProfile = styled.img`
 `
 
 export const ComentText = styled.p`
-    font-size: 1rem;
+    font-size: 1.5rem;
     text-justify: inherit;
     background-color: white;
     width: 100%;

@@ -36,23 +36,23 @@ export class FKPosImg{
 }
 
 export class FKPosGen{
-    constructor(postID, genID){
+    constructor(postID, fkLikePos){
         if(postID == '' || postID == null || postID == undefined){
             this.postID = ''
         }else{
             this.postID = postID
         }
 
-        if(genID == '' || genID == null || genID == undefined){
-            this.genID = ''
+        if(fkLikePos == '' || fkLikePos == null || fkLikePos == undefined){
+            this.fkLikePos = ''
         }else{
-            this.genID = genID
+            this.fkLikePos = fkLikePos
         }
     }
 
     async insert(){
         try {
-            const { rowsAffected } = con.query(`insert into genPos values(${this.postID}, ${this.genID}, 1)`)
+            const { rowsAffected } = con.query(`insert into genPos values(${this.postID}, ${this.fkLikePos}, 1)`)
             return rowsAffected
         } 
         catch (error) 
@@ -97,23 +97,23 @@ export class Comentario{
         }
     }
 
-    static async getCom(){
+    async getCom(){
 
         try {
             const { recordset } = await con.query(`select textCom, u.nome, i.pathImg, c.insertDate, c.comID from coment as c
             inner join usuar as u on(u.userID = c.fkUserCom)
             inner join post as p on(p.postID = c.fkPostCom)
             inner join img as i on(u.fkImg = i.imgID)
-            where u.statusUser = 1 and p.statusPost = 1 and c.statusCom = 1 order by comID desc`)
+            where c.fkPostCom = ${this.fkPost} and u.statusUser = 1 and p.statusPost = 1 and c.statusCom = 1 order by comID desc`)
             return recordset
         } 
         catch (error) 
         {
             return error
-        }
-        
-    } 
-
+        } 
+          
+    }  
+ 
     async insert(){
 
         try {
@@ -132,8 +132,3 @@ export class Comentario{
     }
 }
  
-export class FavLike{
-    constructor(){
-
-    }
-}

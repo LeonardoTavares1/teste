@@ -7,60 +7,11 @@ import { ContentPart } from "./parts/contentPart/contentPart"
 
 pdfjs.GlobalWorkerOptions.workerSrc = `//cdnjs.cloudflare.com/ajax/libs/pdf.js/${pdfjs.version}/pdf.worker.js`
 
-export function OtherBook(obra){
-
-    const itens = obra.obra
-   
-    const [imgUser, setImgUser] = useState()
-    console.log(imgUser)
-    useEffect(() => {
-        AxiosCrud.Get('/usuario/getImg', {userID: itens.userID}).then((response)=> setComent(response.data[0].pathImg))
-
-    },[]) 
-
-
-    return(
-        <BookAlign>
-                <BookContent>
-                    <FaixaN>
-                        <h1>Nome da obra: {itens.titulo}</h1>
-                        <h1>Genero: {itens.genNome}</h1>
-                        <h1>Publicado em: {itens.insertDate}</h1>
-                    </FaixaN>
-                    <TopContent>
-                        <Capa>
-                            <img src={itens.pathImg}></img>
-                        </Capa>
-                        <ProfileAutor>
-                            <a href={`/Perfil/${itens.userName}`}>
-                                <h1>Perfil do autor</h1>
-                                <ImagemPerf>
-                                    <img src={imgUser}></img>
-                                </ImagemPerf>
-                                <h1>{itens.userName}</h1>
-                            </a>
-                        </ProfileAutor>
-                    </TopContent>
-
-                    <ContentPart  texto={itens.texto} book={itens.pathLiv} postID={itens.postID} />
-
-                </BookContent>
-            </BookAlign>
-    )
-}
-//curtir, genNome, imgID, insertDate, livID, pathImg, postID, texto, titulo, userID, userName
-export function MyBook(obra){
-
-    const itens = obra.obra
-
+export function MyBook({obra, userImg, coments}){
     
-    const [imgUser, setImgUser] = useState('')
-    console.log(imgUser)
-    
-    useEffect(() => {
-        AxiosCrud.Get('/usuario/getImg', {userID: itens.userID}).then((response)=> setImgUser(response.data[0].pathImg))
-    },[])
-
+    const itens = obra
+    const img = itens.pathImg
+    console.log(obra)
     return(
         <BookAlign>
                 <BookContent> 
@@ -71,22 +22,20 @@ export function MyBook(obra){
                     </FaixaN>
                     <TopContent>
                         <Capa>
-                            <img src={itens.pathImg}></img>
+                            <img alt='' src={itens.pathImg} />
                         </Capa>
                         <ProfileAutor>
                             <a href={`/Perfil/${itens.userName}`}>
                                 <h1>Perfil do autor</h1>
                                 <ImagemPerf>
-                                    <img src={imgUser}></img>
+                                    <img src={userImg.imgU}></img>
                                 </ImagemPerf>
                                 <h1>{itens.userName}</h1>
                             </a>
                         </ProfileAutor>
                     </TopContent>
 
-                    <ContentPart texto={itens.texto} book={itens.pathLiv} postID={itens.postID} />
-                    
-                    
+                    <ContentPart coments={coments} texto={obra.texto} book={obra.pathLiv} userID={obra.userID} postID={obra.postID} />
 
                 </BookContent>
             </BookAlign>

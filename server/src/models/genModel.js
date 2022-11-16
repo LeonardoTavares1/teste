@@ -7,7 +7,7 @@ export class GenModel{
         if(genID == '' || genID == null || genID == undefined){
             this.genID = ''
         }else{
-            this.genID = utf8.decode(genID) 
+            this.genID = genID
         }
     }
 

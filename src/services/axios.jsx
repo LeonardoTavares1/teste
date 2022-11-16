@@ -1,6 +1,5 @@
 import Axios  from "axios"
 import { getToken, Token } from "./auth"
-import { AppContext } from "./Context"
 import { Data } from "./utils"
 
 const port = '3001'
@@ -21,7 +20,7 @@ const Api = Axios.create({
 })
 
 export class AxiosCrud{
-    static async Get(url, info){
+    async Get(url, info){
         if(info){
             const response = await Api.post(url, info)
             return response
@@ -31,12 +30,14 @@ export class AxiosCrud{
         }
     }
 
-    static async Insert(url,  info, config){
+    async Insert(url,  info, config){
         try {
             if(config){
                 const res = await Api.post(url, info, config)
+                return res
             }else{
-                const res = await Api.post(url, info, config)
+                const res = await Api.post(url, info)
+                return res
             }
         } 
         catch (error) 
@@ -52,10 +53,19 @@ export class AxiosUser{
     async axiosGet(nome){
         
         try {
-            return ((Axios.post(`http://localhost:3001/usuario/getProfile`, {
-                nome: nome
-            })))
+            
+            const user = await new AxiosCrud().Insert('/usuario/getProfile', {nome: nome})
+            const usuario = user.data[0]
 
+            const post = await new AxiosCrud().Insert('/post/getFilterUser', {userID: usuario.userID})
+            const posts = post.data
+
+            const info = {
+                liv: posts,
+                user: usuario
+            }
+
+            return info
         } 
         catch (error) 
         {
@@ -235,6 +245,8 @@ export class AxiosUser{
             this.axiosFKPosImg(postID, imgID)
 
             this.axiosFKPosGen(postID, gen)
+
+            window.location.replace('/')
         } 
         catch (error) 
         {
@@ -293,6 +305,25 @@ export class AxiosUser{
         {
             console.log(error)
         }
+    }
+
+    async axiosLiv(params){
+        const liv = await new AxiosCrud().Insert('/post/getFilter', {nome: params})
+        const dadosLiv = liv.data[0]
+
+        const img = await new AxiosCrud().Get('/usuario/getImg', {userID: dadosLiv.userID})
+        const imgU = img.data[0]
+
+        const coment = await new AxiosCrud().Insert('/coment/get', {fkPost: dadosLiv.postID})
+        const comentarios = coment.data
+
+        const info = {
+            liv: dadosLiv,
+            userImg: imgU,
+            coment: comentarios
+        }
+
+        return info
     }
 
 }

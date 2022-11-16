@@ -69,13 +69,13 @@ create table coment(
     comID int identity(1,1) PRIMARY KEY
 )
 
-create table fav(
-	fkFavPos int not null,
-    fkFavUse int not null,
-    constraint favUser FOREIGN key (fkFavUse) REFERENCES usuar(userID),
-    constraint favPos FOREIGN KEY (fkFavPos) REFERENCES post(postid),
-    statusFav int not null,
-    favID int identity(1,1) PRIMARY key 
+create table curtir(
+	fkLikePos int not null,
+    fkLikeUse int not null,
+    constraint likeUser FOREIGN key (fkLikeUse) REFERENCES usuar(userID),
+    constraint likePos FOREIGN KEY (fkLikePos) REFERENCES post(postID),
+    statusLike int not null,
+    likeID int identity(1,1) PRIMARY key 
 )
 
 create table genPos (

@@ -9,7 +9,7 @@ export class PostModel {
         if(nome == '' || nome == null || nome == undefined){
             this.nome = ''
         }else{
-            this.nome = utf8.decode(nome) 
+            this.nome = nome
         }
         if(desc == '' || desc == null || desc == undefined){
             this.desc = ''
@@ -67,7 +67,8 @@ export class PostModel {
                 inner join liv as l on(pt.fkLiv = l.livID)
                 inner join genPos as gp on(pt.postID = gp.fkPos)
                 inner join gen as g on (gp.fkGen = g.genID)
-                where statusUser = 1 and statusPost = 1 and statusLiv = 1 and statusImg = 1`) 
+                where statusUser = 1 and statusPost = 1 and statusLiv = 1 and statusImg = 1 
+                order by postID desc`) 
                 return recordset 
             
         } 
@@ -87,6 +88,22 @@ export class PostModel {
                 inner join genPos as gp on(pt.postID = gp.fkPos)
                 inner join gen as g on (gp.fkGen = g.genID)
                 where statusUser = 1 and statusPost = 1 and statusLiv = 1 and statusImg = 1 and titulo = '${this.nome}'`) 
+                return recordset 
+            
+        } 
+        catch (error) 
+        {
+            return error
+        }
+    }
+
+    async GetFilterUser(){
+        try {
+            const { recordset } = await con.query(`select titulo, pathImg, postID from post as pt 
+                inner join usuar as us on(pt.fkUser = us.userID)
+                inner join posImg as pm on(pt.postID = pm.fkPost)
+                inner join img as m on(pm.fkImg = m.imgID)
+                where statusUser = 1 and statusPost = 1 and statusImg = 1 and userID = ${this.userID}`) 
                 return recordset 
             
         } 

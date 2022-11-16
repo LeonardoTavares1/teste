@@ -57,7 +57,7 @@ export class Usuar{
         catch (error)
         {
             console.log('error model ' + error)
-            return error(error) 
+            return (error) 
         }
     }
 
@@ -71,7 +71,7 @@ export class Usuar{
         catch (error)
         {
             console.log('error model ' + error)
-            return error(error)
+            return (error)
         }
     }
 
@@ -134,10 +134,12 @@ export class Usuar{
 
     async getImg(){
         try {
-            const { recordset } = await con.query(`select pathImg from usuar as us 
+            const { recordset } = await con.query(`select pathImg as imgU from usuar as us 
             inner join img as i on(us.fkImg = i.imgID)
             where userID = ${this.userID} and statusUser = 1`)
-            return recordset
+            
+            return recordset 
+            
         } 
         catch (error) 
         {

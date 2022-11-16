@@ -11,7 +11,7 @@ export const db = {
     },
     connectionTimeout: 1500, 
     pool:{
-        max:10, 
+        max:100, 
         min:0,  
         idleTimeoutMillis:30000
     },

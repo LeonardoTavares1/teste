@@ -4,7 +4,8 @@ import { Comentario } from "../models/fkModels.js"
 export class ComentController{
     static async getCom(req, res){
         try {   
-                const response = await Comentario.getCom()
+                const { textCom, statusCom, fkUser, fkPost } = req.body
+                const response = await new Comentario(textCom, statusCom, fkUser, fkPost).getCom()
                 return res.status(200).json(response)
         } 
         catch (error) 

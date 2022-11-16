@@ -28,7 +28,6 @@ export const Separar = styled.div`
     background-color: ${Secundario};
     width: 100%;
     height: 100%;
-    min-height: 35rem;
     max-height: 100%;
     display: flex;
     flex-direction: column;
@@ -68,18 +67,21 @@ export const Content = styled.div`
     background-color: transparent;
     height: 100%;
     width: 100%;
-    display: flex;
-
-    align-items: center;
+    display: grid;
+    padding-top: 2%;
+    padding-bottom: 3%;
     justify-content: space-around;
+    grid-gap: 1%;
+    grid-template-columns: 18rem 18rem 18rem 18rem 18rem;
+    grid-template-rows: 50% 50%;
 
 `
 
 export const Books = styled.div`
     width: 100%;
     height: 100%;
-    max-height: 85%;
-    max-width: 18rem;
+    max-height: 100%;
+    max-width: 25rem;
     background-color: white;
     display: flex;
     flex-direction: column;
@@ -90,14 +92,18 @@ export const Books = styled.div`
     a{
         text-decoration: none;
         height: 100%;
+        width: 100%;
         display: flex;
         flex-direction: column;
         align-items: center;
-        
 
         h3{
             margin-top: 1rem;
+            overflow: hidden;
+            width: 100%;
+            text-align: center;
         }
+        
 
     }
 
@@ -106,5 +112,6 @@ export const Books = styled.div`
 export const Capa = styled.img`
     width: 100%;
     height: 90%;
+    
 
 `

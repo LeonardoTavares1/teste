@@ -31,13 +31,15 @@ routes.post('/post/insert', FilesCtrl.PostIns)
 
 routes.get('/post/get', PostCtrl.getHomePost)
 routes.post('/post/getFilter', PostCtrl.getFilterPost)
+routes.post('/post/getFilterUser', PostCtrl.getFilterPostUser)
 routes.put('/post/del/:postID', PostCtrl.deletePost)
 
 routes.post('/FKPosImg/insert', FilesCtrl.posImg)
 
 routes.post('/FKPosGen/insert', FilesCtrl.posGen)
 
-routes.get('/coment/get', ComentController.getCom)
+routes.post('/coment/get', ComentController.getCom)
 routes.post('/coment/insert',  ComentController.insertCom)
+
 
 export { routes } 
